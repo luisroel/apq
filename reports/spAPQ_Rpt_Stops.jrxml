@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="spAPQ_Rpt_Stops" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2abfed07-e8d8-4db1-b48d-c51a09672ba2">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MSSQL Dev"/>
+	<property name="ireport.jasperserver.url" value="http://192.168.56.102:8081/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.reportUnit" value="/APQ/Reports/spAPQ_Rpt_Stops"/>
+	<property name="ireport.jasperserver.report.resource" value="/APQ/Reports/spAPQ_Rpt_Stops_files/main_jrxml"/>
+	<parameter name="IdRuntime" class="java.lang.Long"/>
+	<parameter name="Area" class="java.lang.Integer"/>
+	<parameter name="Line" class="java.lang.Integer"/>
+	<parameter name="IdEquipment" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[EXEC [dbo].[spAPQ_Rpt_Stops] $P{IdRuntime} $P{IdRuntime}, $P{Area}, $P{Line}, $P{IdEquipment}]]>
+	</queryString>
+	<field name="IdRuntime" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>
+	</field>
+	<field name="IdEquipment" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="IdEquipment"/>
+	</field>
+	<field name="Date" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="Date"/>
+	</field>
+	<field name="IdParo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="IdParo"/>
+	</field>
+	<field name="TipoParo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TipoParo"/>
+	</field>
+	<field name="Clasification" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Clasification"/>
+	</field>
+	<field name="Time" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="Time"/>
+	</field>
+	<field name="COLUMN_8" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>
+	</field>
+	<field name="From" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="From"/>
+	</field>
+	<field name="To" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="To"/>
+	</field>
+	<field name="Period" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Period"/>
+	</field>
+	<variable name="TotalTime" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Time}]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{IdRuntime}]]></groupExpression>
+		<groupFooter>
+			<band height="52">
+				<textField>
+					<reportElement x="480" y="10" width="80" height="18" uuid="aaf295c1-0a14-4d13-8879-deaa46485749"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$V{TotalTime}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="380" y="10" width="100" height="18" uuid="ae4ab5ea-1a88-49f3-91bb-ebdaa4f46f97"/>
+					<text><![CDATA[Total Time (Minutes):]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="380" y="30" width="100" height="18" uuid="2c43a826-82a2-49aa-ad5d-cc76bdc5afee"/>
+					<text><![CDATA[Total Time (Hours):]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement x="480" y="30" width="80" height="18" uuid="ff2d0164-1510-4781-a918-54a4de2c4cd3"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$V{TotalTime} / 60.0]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="93" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="562" height="30" uuid="b132e248-f533-4cfd-aef7-e456294112ad"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[STOPS EQUIPMENT LIST]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="37" width="40" height="20" uuid="b6ceea8b-59d0-46bc-834d-8f68a25ba076"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Run Id:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="37" width="70" height="20" uuid="d839c924-1008-4dbf-af0e-c4c72abd3cf0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{IdRuntime}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="190" y="37" width="40" height="20" uuid="5860964d-70d3-454a-967e-c0ab25c13797"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[From:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="37" width="130" height="20" uuid="3461c340-391a-4348-8078-3a9e977e4ddd"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{From}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="37" width="30" height="20" uuid="25f0f589-7d07-4674-aef0-13dcf5a28560"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[To:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="430" y="37" width="130" height="20" uuid="1bbc2fc4-9436-4dc3-b190-0d66a67832c6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{To}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="70" width="100" height="20" backcolor="#F5F5F5" uuid="ce7df464-f2cb-4f18-8bef-00a63e0659e8"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Machine]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="100" y="70" width="100" height="20" backcolor="#F5F5F5" uuid="189c2244-6801-4842-96aa-d9eab41e948e"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="200" y="70" width="80" height="20" backcolor="#F5F5F5" uuid="5b6c7e01-94b3-42aa-a43d-bfc9ec34be83"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Paro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="281" y="70" width="110" height="20" backcolor="#F5F5F5" uuid="cf06a857-fabd-4e59-9809-18314c520e94"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="391" y="70" width="100" height="20" backcolor="#F5F5F5" uuid="98060247-56be-44cb-856d-18c75715dc2e"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Clasificacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="491" y="70" width="70" height="20" backcolor="#F5F5F5" uuid="bb8d0e13-c278-4672-ab7a-68a4b85aef86"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="18" uuid="bea0e26d-3f18-41e9-a41c-1c9d279d2292"/>
+				<textFieldExpression><![CDATA[$F{IdEquipment}]]></textFieldExpression>
+			</textField>
+			<textField pattern="M/d/yy h:mm a">
+				<reportElement x="100" y="0" width="100" height="18" uuid="dad793a6-6937-43a2-827e-7767c0da93e2"/>
+				<textFieldExpression><![CDATA[$F{Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="0" width="80" height="18" uuid="4310940c-6d8f-4d70-942d-e96073ecf7d0"/>
+				<textFieldExpression><![CDATA[$F{IdParo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="0" width="110" height="18" uuid="99b27e0f-7a31-4f97-b3ef-9fd8d9fd5928"/>
+				<textFieldExpression><![CDATA[$F{TipoParo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="391" y="0" width="100" height="18" uuid="34067d37-5b5d-46cd-8c18-d2c360b8ddcf"/>
+				<textFieldExpression><![CDATA[$F{Clasification}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="491" y="0" width="70" height="18" uuid="8926e369-2838-461d-b400-254d243452b9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Time}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

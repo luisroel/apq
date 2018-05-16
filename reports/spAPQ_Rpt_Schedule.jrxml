@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="spAPQ_Rpt_Schedule" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="31139fc5-658d-405f-b27f-7cf5d29ad78b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MSSQL Dev"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="ireport.jasperserver.url" value="http://192.168.56.102:8081/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.reportUnit" value="/APQ/Reports/spAPQ_Rpt_Schedule"/>
+	<property name="ireport.jasperserver.report.resource" value="/APQ/Reports/spAPQ_Rpt_Schedule_files/main_jrxml"/>
+	<parameter name="IdRuntime" class="java.lang.Long"/>
+	<parameter name="Area" class="java.lang.Integer"/>
+	<parameter name="Line" class="java.lang.Integer"/>
+	<parameter name="IdEquipment" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[EXEC spAPQ_Rpt_Availability $P{IdRuntime} $P{IdRuntime}, $P{Area}, $P{Line}, $P{IdEquipment}]]>
+	</queryString>
+	<field name="IdRuntime" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>
+	</field>
+	<field name="Date" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="Date"/>
+	</field>
+	<field name="DayOfWeek" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="DayOfWeek"/>
+	</field>
+	<field name="Working" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="Working"/>
+	</field>
+	<field name="Break" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="Break"/>
+	</field>
+	<field name="Off" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="Off"/>
+	</field>
+	<field name="COLUMN_7" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>
+	</field>
+	<field name="From" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="From"/>
+	</field>
+	<field name="To" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="To"/>
+	</field>
+	<field name="Period" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Period"/>
+	</field>
+	<variable name="TotalAvailable" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Sum">
+		<variableExpression><![CDATA[$F{Working}]]></variableExpression>
+	</variable>
+	<variable name="TotalBreaks" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Sum">
+		<variableExpression><![CDATA[$F{Break}]]></variableExpression>
+	</variable>
+	<variable name="TotalOff" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Sum">
+		<variableExpression><![CDATA[$F{Off}]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{IdRuntime}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<staticText>
+					<reportElement mode="Opaque" x="30" y="0" width="130" height="20" backcolor="#F5F5F5" uuid="c36ecfa3-d143-4cd8-a959-b8dcaddeb69b"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="160" y="0" width="80" height="20" backcolor="#F5F5F5" uuid="dbe3bcfb-9427-4651-a1ef-0307836692b2"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Day Of Week]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="240" y="0" width="80" height="20" backcolor="#F5F5F5" uuid="1327db29-e017-4d40-9ac1-ba5d37b7f0ac"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Available Hours]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="320" y="0" width="110" height="20" backcolor="#F5F5F5" uuid="df4431a7-45e4-4c81-a744-0aed21e59ebc"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Breaks/Changeover]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="430" y="0" width="80" height="20" backcolor="#F5F5F5" uuid="85a66ad4-3c16-4781-80da-740b0e6f67aa"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Off Hours]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="67">
+				<textField pattern="#,##0.00">
+					<reportElement x="240" y="3" width="80" height="20" uuid="14bd41e4-0086-4cac-a32d-fed400cc715a"/>
+					<box>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{TotalAvailable}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="320" y="3" width="110" height="20" uuid="de3aa684-6dde-4b33-80ab-46672cfd4aa8"/>
+					<box>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{TotalBreaks}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="430" y="3" width="80" height="20" uuid="1ca65716-c4d4-46f4-a5a9-48ef891aa636"/>
+					<box>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{TotalOff}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="510" y="3" width="48" height="20" uuid="a01c263d-86e6-465f-9b30-e299cd2dce75"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Hours]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement x="240" y="23" width="80" height="20" uuid="b3bc95fe-605f-4532-8b7a-f76a85c9895c"/>
+					<box>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{TotalAvailable} * 60.0]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="320" y="23" width="110" height="20" uuid="e8b27d87-2a6f-4ad0-9e8d-9dff3dc0ae33"/>
+					<box>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{TotalBreaks} * 60.0]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="430" y="23" width="80" height="20" uuid="689ae6c6-ddc9-42ed-aebf-e9f420b78e17"/>
+					<box>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{TotalOff} * 60.0]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="510" y="23" width="48" height="20" uuid="afb51386-057b-4178-992c-e4838f11ffd0"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Minutes]]></text>
+				</staticText>
+				<textField pattern="#,##0.00">
+					<reportElement x="240" y="43" width="80" height="20" uuid="465c7b6a-debe-46d4-885d-70c327fcd866"/>
+					<box>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{TotalAvailable} * 60.0 * 60.0]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="320" y="43" width="110" height="20" uuid="f3a166c5-b4e9-4f50-80be-4fabd442605c"/>
+					<box>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{TotalBreaks}* 60.0 * 60.0]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00">
+					<reportElement x="430" y="43" width="80" height="20" uuid="3038b981-7638-4443-96fc-8faa9df1f220"/>
+					<box>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$V{TotalOff}* 60.0 * 60.0]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="510" y="43" width="48" height="20" uuid="4fd46971-bd39-43ec-a464-4b7595ebf088"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Seconds]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="570" height="30" uuid="710732ea-721c-410a-86dd-3503a6b7ea29"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[Schedule]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField pattern="MMM d, yyyy h:mm:ss a">
+				<reportElement x="30" y="0" width="130" height="20" uuid="06872929-c108-4c09-9a98-9a5dc8d93fd4"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="80" height="20" uuid="8bf4ec82-1012-41a0-88d9-d08c4f0ce0e2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DayOfWeek}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="240" y="0" width="80" height="20" uuid="04315a9b-a4af-4514-ab2c-183bcd71dba3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Working}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="320" y="0" width="110" height="20" uuid="ee0054b6-f73e-49ca-83da-5f2761f2d74f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Break}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="430" y="0" width="80" height="20" uuid="63b11c04-52ca-4a68-b964-19def01026a8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Break}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
