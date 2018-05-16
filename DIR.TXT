@@ -1,0 +1,91 @@
+05/08/2018  08:59 AM             9,882 tables.sql
+
+
+05/07/2018  02:13 PM             1,275 spAPQ_Create_Availability.sql
+05/07/2018  06:34 PM             2,044 spAPQ_Create_Counts.sql
+05/07/2018  02:34 PM               711 spAPQ_Create_Equipment.sql
+05/07/2018  03:38 PM             1,141 spAPQ_Create_SetupAndStart.sql
+05/07/2018  03:24 PM               956 spAPQ_Create_Stops.sql
+
+
+05/07/2018  03:19 PM             1,004 spAPQ_Create_AvailabilitySummary.sql
+05/07/2018  04:42 PM               772 spAPQ_Create_CountsSummary.sql
+05/07/2018  02:35 PM               737 spAPQ_Create_EquipmentSummary.sql
+05/07/2018  03:05 PM               767 spAPQ_Create_SetupAndStartSummary.sql
+05/07/2018  02:57 PM               734 spAPQ_Create_StopsSummary.sql
+
+
+***
+05/07/2018  03:19 PM             1,004 spAPQ_Create_AvailabilityByArea.sql
+05/07/2018  04:42 PM               772 spAPQ_Create_CountsByArea.sql
+05/07/2018  02:35 PM               737 spAPQ_Create_EquipmentByArea.sql
+05/07/2018  03:05 PM               767 spAPQ_Create_SetupAndStartByArea.sql
+05/07/2018  02:57 PM               734 spAPQ_Create_StopsByArea.sql
+***
+
+***
+05/07/2018  03:19 PM             1,004 spAPQ_Create_AvailabilityByLine.sql
+05/07/2018  04:42 PM               772 spAPQ_Create_CountsByLine.sql
+05/07/2018  02:35 PM               737 spAPQ_Create_EquipmentByLine.sql
+05/07/2018  03:05 PM               767 spAPQ_Create_SetupAndStartByLine.sql
+05/07/2018  02:57 PM               734 spAPQ_Create_StopsByLine.sql
+***
+
+
+***
+05/07/2018  03:19 PM             1,004 spAPQ_Create_Availability.sql 					****** Already exists *******
+05/07/2018  04:42 PM               772 spAPQ_Create_CountsByEquipment.sql
+05/07/2018  02:35 PM               737 spAPQ_Create_EquipmentByEquipment.sql            ****** Dont't apply *******
+05/07/2018  03:05 PM               767 spAPQ_Create_SetupAndStartByEquipment.sql
+05/07/2018  02:57 PM               734 spAPQ_Create_StopsByEquipment.sql
+***
+
+
+05/07/2018  04:41 PM             1,580 spAPQ_Execute_Runtime.sql
+
+
+05/07/2018  04:19 PM               912 v_APQ_Get_Counts.sql
+05/07/2018  04:10 PM               563 v_APQ_Get_ProductionSchedule.sql
+05/07/2018  03:47 PM               542 v_APQ_Get_Schedule.sql
+05/07/2018  03:49 PM               411 v_APQ_Get_Stops.sql
+
+05/07/2018  03:49 PM               411 v_APQ_Get_Runtime.sql
+05/07/2018  03:49 PM               411 v_APQ_Get_IAPQ.sql
+05/07/2018  03:49 PM               411 v_APQ_Get_Index.sql
+
+
+***
+05/07/2018  04:19 PM               912 v_APQ_Get_CountsByArea.sql
+05/07/2018  04:10 PM               563 v_APQ_Get_ProductionScheduleByArea.sql
+05/07/2018  03:47 PM               542 v_APQ_Get_ScheduleByArea.sql
+05/07/2018  03:49 PM               411 v_APQ_Get_StopsByArea.sql
+
+05/07/2018  03:49 PM               411 v_APQ_Get_RuntimeByArea.sql  			************
+05/07/2018  03:49 PM               411 v_APQ_Get_IAPQByArea.sql  				************
+05/07/2018  10:58 PM             1,254 v_APQ_Get_IndexByArea.sql
+***
+
+***
+05/07/2018  04:19 PM               912 v_APQ_Get_CountsByLine.sql
+05/07/2018  04:10 PM               563 v_APQ_Get_ProductionScheduleByLine.sql
+05/07/2018  03:47 PM               542 v_APQ_Get_ScheduleByLine.sql
+05/07/2018  03:49 PM               411 v_APQ_Get_StopsByLine.sql
+
+
+05/07/2018  03:49 PM               411 v_APQ_Get_RuntimeByLine.sql  			************
+05/07/2018  03:49 PM               411 v_APQ_Get_IAPQByLine.sql  				************
+05/07/2018  10:58 PM             1,254 v_APQ_Get_IndexByLine.sql
+***
+
+***
+05/07/2018  04:19 PM               912 v_APQ_Get_CountsByEquipment.sql
+05/07/2018  04:10 PM               563 v_APQ_Get_ProductionScheduleByEquipment.sql
+05/07/2018  03:47 PM               542 v_APQ_Get_ScheduleByEquipment.sql
+05/07/2018  03:49 PM               411 v_APQ_Get_StopsByEquipment.sql
+
+05/07/2018  03:49 PM               411 v_APQ_Get_RuntimeByEquipment.sql  		************
+05/07/2018  03:49 PM               411 v_APQ_Get_IAPQByEquipment.sql  			************
+05/07/2018  10:58 PM             1,254 v_APQ_Get_IndexByEquipment.sql
+***
+
+
