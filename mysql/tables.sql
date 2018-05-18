@@ -7,9 +7,9 @@ insert into `apq_settings` (`period` ) values (30);
 
 drop table if exists `apq_runtime`;
 create table `apq_runtime` (
-	    `idruntime`	bigint IDENTITY
+	    `idruntime`	bigint auto_increment primary key
 	  , `from`		datetime
-	  , `To`		datetime
+	  , `to`		datetime
 	  , `period`	int
 );
 
@@ -20,11 +20,11 @@ create table `apq_daysoff` (
 );
 
 insert into `apq_daysoff` ()
-	  values('1/1/2018', 'Plant shutdown')
-	, values('1/2/2018', 'Plant shutdown')
-	, values('2/5/2018', 'Constitution Day')
-	, values('3/31/2018', 'Holy Saturday')
-	, values('4/30/2018', 'Labor Day');
+	  values('2018-1-1', 'Plant shutdown')
+	, ('2018-1-2', 'Plant shutdown')
+	, ('2018-2-5', 'Constitution Day')
+	, ('2018-3-31', 'Holy Saturday')
+	, ('2018-4-30', 'Labor Day');
 
 drop table if exists `apq_scheduletemplate`;
 create table `apq_scheduletemplate` (
@@ -36,14 +36,13 @@ create table `apq_scheduletemplate` (
 
 insert into `apq_scheduletemplate` (`dayofweek`, `working`, `off`, `break`) 
 	  values ( 1, 0, 0, 24)
-	, values ( 2, 23, 1, 0)
-	, values ( 3, 23, 1, 0)
-	, values ( 4, 23, 1, 0)
-	, values ( 5, 23, 1, 0)
-	, values ( 6, 23, 1, 0)
-	, values ( 7, 23, 1, 0)
-	, values ( 8, 14, 0, 10);
-
+	, ( 2, 23, 1, 0)
+	, ( 3, 23, 1, 0)
+	, ( 4, 23, 1, 0)
+	, ( 5, 23, 1, 0)
+	, ( 6, 23, 1, 0)
+	, ( 7, 23, 1, 0)
+	, ( 8, 14, 0, 10);
 
 drop table if exists `apq_availability`;
 create table `apq_availability` (
@@ -60,9 +59,9 @@ drop table if exists `apq_equipment`;
 create table `apq_equipment` (
 	  `idruntime`	bigint
 	, `idequipment`	varchar(20)
-	, `Power`		int
-	, `Area`		int
-	, `Line`		int
+	, `power`		int
+	, `area`		int
+	, `line`		int
 );
 
 drop table if exists `apq_stops`;
@@ -137,7 +136,7 @@ create table `apq_prodtimessummary` (
 drop table if exists `apq_stopssummary`;
 create table `apq_stopssummary` (
 	  `idruntime`		bigint
-	, `clasificacion`	varchar(50)
+	, `clasification`	varchar(50)
 	, `time`			decimal
 );
 
@@ -187,7 +186,7 @@ create table `apq_prodtimesbyarea` (
 
 
 drop table if exists `apq_stopsbyarea`;
-create table `apq_atopsbyarea` (
+create table `apq_stopsbyarea` (
 	  `idruntime`		bigint
 	, `area`			int
 	, `clasificacion`	varchar(50)
@@ -216,7 +215,7 @@ create table `apq_setupandstartbyarea` (
 
 -- BY LINE
 drop table if exists `apq_availabilitybyline`;
-create table `apq_Availabilitybyline` (
+create table `apq_availabilitybyline` (
 	  `idruntime`				bigint
 	, `area`					int
 	, `line`					int

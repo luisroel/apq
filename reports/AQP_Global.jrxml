@@ -2,139 +2,147 @@
 <!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AQP_Global" pageWidth="842" pageHeight="612" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b810f026-b6a9-464c-a8c5-bc62413d9dd8">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MSSQL Dev"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql Server"/>
 	<property name="ireport.jasperserver.url" value="http://192.168.56.102:8081/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
 	<property name="ireport.jasperserver.reportUnit" value="/APQ/Charts/AQP_Global"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<queryString language="SQL">
-		<![CDATA[EXEC [dbo].[spAPQ_Rpt_APQ]-1]]>
+		<![CDATA[call spapq_rpt_apq(-1)]]>
 	</queryString>
-	<field name="IdRuntime" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>
+	<field name="idruntime" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="idruntime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_runtime"/>
 	</field>
-	<field name="Time" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="Time"/>
+	<field name="time" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="time"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_runtime"/>
 	</field>
-	<field name="TotalTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="TotalTime"/>
+	<field name="totaltime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="totaltime"/>
 	</field>
-	<field name="PlannedProductionTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="PlannedProductionTime"/>
+	<field name="plannedproductiontime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="plannedproductiontime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_availabilitysummary"/>
 	</field>
-	<field name="PPT_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="PPT_Porc"/>
+	<field name="ppt_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ppt_porc"/>
 	</field>
-	<field name="PlannedStop" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="PlannedStop"/>
+	<field name="plannedstop" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="plannedstop"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_availabilitysummary"/>
 	</field>
-	<field name="PlannedStop_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="PlannedStop_Porc"/>
+	<field name="plannedStop_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="plannedStop_porc"/>
 	</field>
-	<field name="ScheduleLoss" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="ScheduleLoss"/>
+	<field name="scheduleloss" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="scheduleloss"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_availabilitysummary"/>
 	</field>
-	<field name="ScheduleLoss_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="ScheduleLoss_Porc"/>
+	<field name="scheduleLoss_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="scheduleLoss_porc"/>
 	</field>
-	<field name="Productiontime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="Productiontime"/>
+	<field name="productiontime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="productiontime"/>
 	</field>
-	<field name="Productiontime_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="Productiontime_Porc"/>
+	<field name="productiontime_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="productiontime_porc"/>
 	</field>
-	<field name="StdSetupTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="StdSetupTime"/>
+	<field name="stdsetuptime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stdsetuptime"/>
 	</field>
-	<field name="StdSetupTime_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="StdSetupTime_Porc"/>
+	<field name="stdsetuptime_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stdsetuptime_porc"/>
 	</field>
-	<field name="StdStartTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="StdStartTime"/>
+	<field name="stdstarttime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stdstarttime"/>
 	</field>
-	<field name="StdStartTime_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="StdStartTime_Porc"/>
+	<field name="stdstarttime_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stdstarttime_porc"/>
 	</field>
-	<field name="Runtime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="Runtime"/>
+	<field name="runtime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="runtime"/>
 	</field>
-	<field name="Runtime_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="Runtime_Porc"/>
+	<field name="runtime_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="runtime_porc"/>
 	</field>
-	<field name="StopTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="StopTime"/>
+	<field name="stoptime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stoptime"/>
 	</field>
-	<field name="Stoptime_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="Stoptime_Porc"/>
+	<field name="stoptime_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="stoptime_porc"/>
 	</field>
-	<field name="TotalCount" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="TotalCount"/>
+	<field name="totalcount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="totalcount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_countssummary"/>
 	</field>
-	<field name="GoodCount" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="GoodCount"/>
+	<field name="goodcount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="goodcount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_countssummary"/>
 	</field>
-	<field name="BadCount" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="BadCount"/>
+	<field name="badcount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="badcount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_countssummary"/>
 	</field>
-	<field name="ProducedTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="ProducedTime"/>
+	<field name="producedtime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="producedtime"/>
 	</field>
-	<field name="GoodTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="GoodTime"/>
+	<field name="goodtime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="goodtime"/>
 	</field>
-	<field name="LossTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="LossTime"/>
+	<field name="losstime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="losstime"/>
 	</field>
-	<field name="LossTime_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="LossTime_Porc"/>
+	<field name="losstime_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="losstime_porc"/>
 	</field>
-	<field name="ActualProdTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="ActualProdTime"/>
+	<field name="actualprodtime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="actualprodtime"/>
 	</field>
-	<field name="PerformanceLoss" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="PerformanceLoss"/>
+	<field name="performanceloss" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="performanceloss"/>
 	</field>
-	<field name="PerformanceLoss_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="PerformanceLoss_Porc"/>
+	<field name="performanceloss_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="performanceloss_porc"/>
 	</field>
-	<field name="IA" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="IA"/>
+	<field name="ia" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ia"/>
 	</field>
-	<field name="IA_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="IA_Porc"/>
+	<field name="ia_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ia_porc"/>
 	</field>
-	<field name="IP" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="IP"/>
+	<field name="ip" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ip"/>
 	</field>
-	<field name="IP_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="IP_Porc"/>
+	<field name="ip_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="ip_porc"/>
 	</field>
-	<field name="IQ" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="IQ"/>
+	<field name="iq" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="iq"/>
 	</field>
-	<field name="IQ_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="IQ_Porc"/>
+	<field name="iq_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="iq_porc"/>
 	</field>
-	<field name="Index" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="Index"/>
+	<field name="index" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="index"/>
 	</field>
-	<field name="Index_Porc" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="Index_Porc"/>
+	<field name="index_porc" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="index_porc"/>
 	</field>
-	<field name="IndexTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="IndexTime"/>
+	<field name="indextime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="indextime"/>
 	</field>
 	<field name="COLUMN_39" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>
+		<property name="com.jaspersoft.studio.field.label" value="idruntime"/>
 	</field>
-	<field name="Title" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="Title"/>
+	<field name="title" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="title"/>
 	</field>
-	<field name="Value1" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="Value1"/>
+	<field name="value1" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="value1"/>
 	</field>
-	<field name="Pos" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="Pos"/>
+	<field name="pos" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="pos"/>
 	</field>
 	<group name="IdRuntime">
 		<groupExpression><![CDATA[$F{IdRuntime}]]></groupExpression>

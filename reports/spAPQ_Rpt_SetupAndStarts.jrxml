@@ -3,10 +3,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="spAPQ_Rpt_Counts" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4c8a2e29-fd1e-47b8-8017-050dea011a73">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MSSQL Dev"/>
-	<property name="ireport.jasperserver.url" value="http://192.168.56.102:8081/jasperserver/"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8081/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
 	<property name="ireport.jasperserver.reportUnit" value="/APQ/Reports/spAPQ_Rpt_SetupAndStarts"/>
-	<property name="ireport.jasperserver.report.resource" value="/APQ/Reports/spAPQ_Rpt_SetupAndStarts_files/main_jrxml"/>
 	<parameter name="IdRuntime" class="java.lang.Long"/>
 	<parameter name="Area" class="java.lang.Integer"/>
 	<parameter name="Line" class="java.lang.Integer"/>

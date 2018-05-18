@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="spAPQ_Rpt_Counts" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f066f5d8-7b00-4720-921c-82bfef4cf314">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MSSQL Dev"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql Server"/>
 	<property name="com.jaspersoft.studio.unit." value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
@@ -12,7 +12,7 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<property name="ireport.jasperserver.url" value="http://192.168.56.102:8081/jasperserver/"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8081/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
 	<property name="ireport.jasperserver.reportUnit" value="/APQ/Reports/spAPQ_Rpt_Counts"/>
 	<property name="ireport.jasperserver.report.resource" value="/APQ/Reports/spAPQ_Rpt_Counts_files/main_jrxml"/>
@@ -21,73 +21,108 @@
 	<parameter name="Line" class="java.lang.Integer"/>
 	<parameter name="IdEquipment" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[EXEC [dbo].[spAPQ_Rpt_Counts] $P{IdRuntime}, $P{Area}, $P{Line}, $P{IdEquipment}]]>
+		<![CDATA[call spapq_rpt_counts($P{IdRuntime}, $P{Area}, $P{Line}, $P{IdEquipment})]]>
 	</queryString>
-	<field name="IdRuntime" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>
+	<field name="idruntime" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="idruntime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_counts"/>
 	</field>
-	<field name="ItemId" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="ItemId"/>
+	<field name="itemid" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="itemid"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_counts"/>
 	</field>
-	<field name="IdEquipment" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="IdEquipment"/>
+	<field name="idequipment" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="idequipment"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_counts"/>
 	</field>
-	<field name="Date" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="Date"/>
+	<field name="date" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_counts"/>
 	</field>
-	<field name="CycleTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="CycleTime"/>
+	<field name="cycletime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="cycletime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_counts"/>
 	</field>
-	<field name="GoodCount" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="GoodCount"/>
+	<field name="goodcount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="goodcount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_counts"/>
 	</field>
-	<field name="BadCount" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="BadCount"/>
+	<field name="badcount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="badcount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_counts"/>
 	</field>
-	<field name="TotalCount" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="TotalCount"/>
+	<field name="totalcount" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="totalcount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_counts"/>
 	</field>
-	<field name="GoodTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="GoodTime"/>
+	<field name="goodtime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="goodtime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_counts"/>
 	</field>
-	<field name="LossTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="LossTime"/>
+	<field name="losstime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="losstime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_counts"/>
 	</field>
-	<field name="TotalTime" class="java.math.BigDecimal">
-		<property name="com.jaspersoft.studio.field.label" value="TotalTime"/>
+	<field name="totaltime" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="totaltime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_counts"/>
 	</field>
 	<field name="COLUMN_12" class="java.lang.Long">
-		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>
+		<property name="com.jaspersoft.studio.field.label" value="idruntime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_runtime"/>
 	</field>
-	<field name="From" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="From"/>
+	<field name="from" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="from"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_runtime"/>
 	</field>
-	<field name="To" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.label" value="To"/>
+	<field name="to" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="to"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_runtime"/>
 	</field>
-	<field name="Period" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.label" value="Period"/>
+	<field name="period" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="period"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_runtime"/>
+	</field>
+	<field name="COLUMN_16" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="idruntime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_equipment"/>
+	</field>
+	<field name="COLUMN_17" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="idequipment"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_equipment"/>
+	</field>
+	<field name="power" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="power"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_equipment"/>
+	</field>
+	<field name="area" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="area"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_equipment"/>
+	</field>
+	<field name="line" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="line"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="apq_equipment"/>
 	</field>
 	<variable name="TotalGoodCount" class="java.lang.Long" resetType="Group" resetGroup="IdRuntime" calculation="Sum">
-		<variableExpression><![CDATA[$F{GoodCount}]]></variableExpression>
+		<variableExpression><![CDATA[$F{goodcount}]]></variableExpression>
 	</variable>
 	<variable name="TotalBadCount" class="java.lang.Long" resetType="Group" resetGroup="IdRuntime" calculation="Sum">
-		<variableExpression><![CDATA[$F{BadCount}]]></variableExpression>
+		<variableExpression><![CDATA[$F{badcount}]]></variableExpression>
 	</variable>
 	<variable name="TotalTotalCount" class="java.lang.Long" resetType="Group" resetGroup="IdRuntime" calculation="Sum">
-		<variableExpression><![CDATA[$F{TotalCount}]]></variableExpression>
+		<variableExpression><![CDATA[$F{totalcount}]]></variableExpression>
 	</variable>
 	<variable name="TotalGoodTime" class="java.lang.Double" resetType="Group" resetGroup="IdRuntime" calculation="Sum">
-		<variableExpression><![CDATA[$F{GoodTime}]]></variableExpression>
+		<variableExpression><![CDATA[$F{goodtime}]]></variableExpression>
 	</variable>
 	<variable name="TotalLossTime" class="java.lang.Float" resetType="Group" resetGroup="IdRuntime" calculation="Sum">
-		<variableExpression><![CDATA[$F{LossTime}]]></variableExpression>
+		<variableExpression><![CDATA[$F{losstime}]]></variableExpression>
 	</variable>
 	<variable name="TotalTotalTime" class="java.lang.Double" resetType="Group" resetGroup="IdRuntime" calculation="Sum">
-		<variableExpression><![CDATA[$F{TotalTime}]]></variableExpression>
+		<variableExpression><![CDATA[$F{totaltime}]]></variableExpression>
 	</variable>
 	<group name="IdRuntime">
-		<groupExpression><![CDATA[$F{IdRuntime}]]></groupExpression>
+		<groupExpression><![CDATA[$F{idruntime}]]></groupExpression>
 		<groupFooter>
 			<band height="71">
 				<textField pattern="#,###,##0">
@@ -190,7 +225,7 @@
 			<textField>
 				<reportElement x="40" y="30" width="70" height="20" uuid="fb4f97d8-9890-4bd3-a5bf-0018074aebf9"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{IdRuntime}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{idruntime}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="290" y="30" width="40" height="20" uuid="ff16f6b3-8d6d-42d1-90c0-9c8b204e4f04"/>
@@ -200,7 +235,7 @@
 			<textField>
 				<reportElement x="330" y="30" width="130" height="20" uuid="923deee0-09ff-49fe-a2ee-92801367f30c"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{From}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{from}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="580" y="30" width="30" height="20" uuid="0c7f1c0f-7ca0-4dd1-b30a-7eacbb4d5750"/>
@@ -210,7 +245,7 @@
 			<textField>
 				<reportElement x="610" y="30" width="130" height="20" uuid="cbffb556-7242-431b-9778-1b2bb9c76aa3"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{To}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{to}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="61" width="80" height="20" backcolor="#F5F5F5" uuid="08e9a5d6-2213-48cc-a8dd-f4f706105125"/>
@@ -328,49 +363,49 @@
 		<band height="20" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="80" height="20" uuid="264635d9-7944-4d99-acf0-892b0ee0c323"/>
-				<textFieldExpression><![CDATA[$F{ItemId}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{itemid}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="80" y="0" width="80" height="20" uuid="c5af7610-9397-46da-9d4c-e17c47b8d4da"/>
-				<textFieldExpression><![CDATA[$F{IdEquipment}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{idequipment}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="160" y="0" width="71" height="20" uuid="0ec7fb45-712c-48a2-9e35-a778fb715afb"/>
-				<textFieldExpression><![CDATA[$F{Date}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="230" y="0" width="50" height="20" uuid="98d44a52-79f3-463c-babd-cf42b77b1980"/>
-				<textFieldExpression><![CDATA[$F{CycleTime}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cycletime}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="280" y="0" width="70" height="20" uuid="b9acc9aa-30bc-4f56-b2d6-992cd293c118"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{GoodCount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{goodcount}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="350" y="0" width="60" height="20" uuid="31ab2ca7-e2a2-4365-8910-f956291afcf7"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{BadCount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{badcount}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="410" y="0" width="80" height="20" uuid="42ec9667-8f5b-4154-98db-ed3fe488f1fc"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{TotalCount}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{totalcount}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="492" y="0" width="88" height="20" uuid="a0005201-225e-48cd-a4dd-f87843a7c2cb"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{GoodTime}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{goodtime}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="650" y="0" width="90" height="20" uuid="cf2b23f3-9be8-468b-a906-f9c847040e24"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{TotalTime}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{totaltime}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="580" y="0" width="70" height="20" uuid="8d02fc44-f6d8-4252-b7ac-13a17b53c326"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{LossTime}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{losstime}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

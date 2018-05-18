@@ -2,8 +2,8 @@
 <!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="spAPQ_Rpt_Stops" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2abfed07-e8d8-4db1-b48d-c51a09672ba2">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MSSQL Dev"/>
-	<property name="ireport.jasperserver.url" value="http://192.168.56.102:8081/jasperserver/"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql Server"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8081/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
 	<property name="ireport.jasperserver.reportUnit" value="/APQ/Reports/spAPQ_Rpt_Stops"/>
 	<property name="ireport.jasperserver.report.resource" value="/APQ/Reports/spAPQ_Rpt_Stops_files/main_jrxml"/>
@@ -12,7 +12,7 @@
 	<parameter name="Line" class="java.lang.Integer"/>
 	<parameter name="IdEquipment" class="java.lang.String"/>
 	<queryString language="SQL">
-		<![CDATA[EXEC [dbo].[spAPQ_Rpt_Stops] $P{IdRuntime} $P{IdRuntime}, $P{Area}, $P{Line}, $P{IdEquipment}]]>
+		<![CDATA[call [dbo].[spapq_rpt_stops] $P{idruntime} $P{idruntime}, $P{area}, $P{line}, $P{idequipment}]]>
 	</queryString>
 	<field name="IdRuntime" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>

@@ -3,9 +3,10 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AQP_Areas" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="320aef4e-73b7-4ada-9c09-852c02dc0e12">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MSSQL Dev"/>
-	<property name="ireport.jasperserver.url" value="http://192.168.56.102:8081/jasperserver/"/>
+	<property name="ireport.jasperserver.url" value="http://localhost:8081/jasperserver/"/>
 	<property name="ireport.jasperserver.user" value="jasperadmin"/>
 	<property name="ireport.jasperserver.reportUnit" value="/APQ/Charts/AQP_Areas"/>
+	<property name="ireport.jasperserver.report.resource" value="/APQ/Charts/AQP_Areas_files/main_jrxml"/>
 	<parameter name="IdRuntime" class="java.lang.Long"/>
 	<parameter name="Area" class="java.lang.Integer"/>
 	<queryString language="SQL">
