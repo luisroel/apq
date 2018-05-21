@@ -71,7 +71,7 @@ create table `apq_stops` (
 	, `date`			datetime
 	, `idparo`			varchar(10)
 	, `tipoparo`		varchar(100)
-	, `clasificacion`	varchar(50)
+	, `clasification`	varchar(50)
 	, `time`			decimal
 );
 
@@ -189,7 +189,7 @@ drop table if exists `apq_stopsbyarea`;
 create table `apq_stopsbyarea` (
 	  `idruntime`		bigint
 	, `area`			int
-	, `clasificacion`	varchar(50)
+	, `clasification`	varchar(50)
 	, `time`			decimal
 );
 
@@ -248,7 +248,7 @@ create table `apq_stopsbyline` (
 	  `idruntime`		bigint
 	, `area`			int
 	, `line`			int
-	, `clasificacion`	varchar(50)
+	, `clasification`	varchar(50)
 	, `time`			decimal
 );
 
@@ -301,7 +301,7 @@ create table `apq_stopsbyequipment` (
 	, `area`			int
 	, `line`			int
 	, `idequipment`		varchar(20)
-	, `clasificacion`	varchar(50)
+	, `clasification`	varchar(50)
 	, `time`			decimal
 );
 

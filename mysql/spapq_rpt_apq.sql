@@ -5,7 +5,7 @@ create procedure `spapq_rpt_apq`(
 	idruntime bigint
 )
 begin
-	if idruntime = -1 then	-- latest run
+	if idruntime < 0 then	-- latest run: review this beacuase it does not make sense
 		select
 			*
 		from

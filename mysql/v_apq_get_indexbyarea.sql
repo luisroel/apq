@@ -1,9 +1,10 @@
-drop view if exists `v_apq_get_index`;
-create view `v_apq_get_index`
+drop view if exists `v_apq_get_indexbyarea`;
+create view `v_apq_get_indexbyarea`
 as
 	select
 		  `rt`.`idruntime`
 		, `rt`.`to`																									as `time`
+		, `av`.`area`
 
 		, `av`.`totaltime`
 		
@@ -28,7 +29,7 @@ as
 		, (`av`.`plannedproductiontime` - `ct`.`stdsetuptime` - `ct`.`stdstarttime` - `av`.`stoptime`) 
 		/ (`av`.`plannedproductiontime` - `ct`.`stdsetuptime` - `ct`.`stdstarttime`)								as `runtime_porc`
 
-		, `av`.`stoptime`	-- equipment stop time
+		, `av`.`stoptime`							-- Equipment stop time
 		, `av`.`stoptime` / (`av`.`plannedproductiontime` - `ct`.`stdsetuptime` - `ct`.`stdstarttime`)				as `stoptime_porc`
 
 		, `ct`.`totalcount`
@@ -85,7 +86,9 @@ as
 
 	from
 		`apq_runtime` `rt`
-		inner join `v_apq_get_availability` `av` on
+		inner join `v_apq_get_availabilitybyarea` `av` on
 			`av`.`idruntime` = `rt`.`idruntime`
-		inner join`v_apq_get_counts` `ct` on
-			`ct`.`idruntime` = `rt`.`idruntime`;
+		inner join `v_apq_get_countsbyarea` `ct` on
+				`ct`.`idruntime`	= `av`.`idruntime`
+            and `ct`.`area`			= `av`.`area`;
+

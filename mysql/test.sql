@@ -67,26 +67,26 @@ order by
 	`dc`.`title`
 
 -- Data By Area 
-select * from `apq_AvailabilityByArea`
-select * from `apq_EquipmentByArea`
-select * from `apq_StopsByArea`
-select * from `apq_CountsByArea`
-select * from `apq_SetupAndStartByArea`
-select * from `apq_ProdTimesByArea`
+select * from `apq_availabilitybyarea`
+select * from `apq_equipmentbyarea`
+select * from `apq_stopsbyarea`
+select * from `apq_countsbyarea`
+select * from `apq_setupandstartbyarea`
+select * from `apq_prodtimesbyarea`
 
 -- Indexes By Area
-select * from `v_apq_get_ProductionScheduleByArea`
-select * from `v_apq_get_StopsByArea`
+select * from `v_apq_get_productionschedulebyarea`
+select * from `v_apq_get_stopsbyarea`
 
-select * from `v_apq_get_CountsByArea`
-select * from `v_apq_get_AvailabilityByArea`
-select * from `v_apq_get_IndexByArea`
-select * from `v_apq_get_DataChartByArea` ORDER BY [IdRuntime`, [Area`, [Title`
+select * from `v_apq_get_countsbyarea`
+select * from `v_apq_get_availabilitybyarea`
+select * from `v_apq_get_indexbyarea`
+select * from `v_apq_get_datachartbyarea` ORDER BY `idruntime`, `area`, `title`
 
-EXEC `spapq_Rpt_apqByArea` -1, 0
-EXEC `spapq_Rpt_apqByArea` -1, 2
-EXEC `spapq_Rpt_apqByArea` 1, 0
-EXEC `spapq_Rpt_apqByArea` 1, 2
+call `spapq_rpt_apqbyarea`(-1, 0)
+call `spapq_rpt_apqbyarea`(-1, 2)
+call `spapq_rpt_apqbyarea`(1, 0)
+call `spapq_rpt_apqbyarea`(1, 2)
 
 
 -- Data By Line 

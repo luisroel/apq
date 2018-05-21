@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="spAPQ_Rpt_ProdTimes" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2990d1f4-9f3f-467c-a10d-94010bb070c0">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MSSQL Dev"/>
+	<property name="ireport.jasperserver.url" value="http://192.168.56.102:8081/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.reportUnit" value="/APQ/Reports/spAPQ_Rpt_ProdTimes"/>
+	<parameter name="IdRuntime" class="java.lang.Long"/>
+	<parameter name="Area" class="java.lang.Integer"/>
+	<parameter name="Line" class="java.lang.Integer"/>
+	<parameter name="IdEquipment" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[EXEC [dbo].[spAPQ_Rpt_ProdTimes] $P{IdRuntime}, $P{Area}, $P{Line}, $P{IdEquipment}]]>
+	</queryString>
+	<field name="IdRuntime" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>
+	</field>
+	<field name="WorkOrder" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="WorkOrder"/>
+	</field>
+	<field name="IdEquipment" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="IdEquipment"/>
+	</field>
+	<field name="StarTime" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="StarTime"/>
+	</field>
+	<field name="EndTime" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="EndTime"/>
+	</field>
+	<field name="Time" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="Time"/>
+	</field>
+	<field name="COLUMN_7" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>
+	</field>
+	<field name="From" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="From"/>
+	</field>
+	<field name="To" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="To"/>
+	</field>
+	<field name="Period" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Period"/>
+	</field>
+	<field name="COLUMN_11" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="IdRuntime"/>
+	</field>
+	<field name="COLUMN_12" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="IdEquipment"/>
+	</field>
+	<field name="Power" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Power"/>
+	</field>
+	<field name="Area" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Area"/>
+	</field>
+	<field name="Line" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Line"/>
+	</field>
+	<variable name="TotalTime" class="java.lang.Double" resetType="Group" resetGroup="IdRuntime" calculation="Sum">
+		<variableExpression><![CDATA[$F{Time}]]></variableExpression>
+	</variable>
+	<group name="IdRuntime">
+		<groupExpression><![CDATA[$F{IdRuntime}]]></groupExpression>
+		<groupFooter>
+			<band height="68">
+				<textField pattern="#,###,##0">
+					<reportElement x="590" y="10" width="88" height="20" uuid="122e1cd4-673b-469f-87fc-56b246b8d2aa"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{TotalTime}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,###,##0">
+					<reportElement x="591" y="40" width="88" height="20" uuid="c3a6dea5-2461-4dd8-b67a-8d43b40ca818"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$V{TotalTime} / 60.0]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="490" y="40" width="100" height="20" uuid="e64f4832-6510-43f8-bb30-f2377a0505cd"/>
+					<text><![CDATA[Total Time (Hours):]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="491" y="10" width="100" height="20" uuid="eb763a5b-a223-4348-a6e6-11d595c80c01"/>
+					<text><![CDATA[Total Time:]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="83" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="29" width="40" height="20" uuid="c9c9f6b6-a484-4019-940a-dca604e977c0"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Run Id:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="29" width="70" height="20" uuid="c978a5e8-ffe8-4a67-a7be-ecf12f25d310"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{IdRuntime}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="310" y="29" width="40" height="20" uuid="205da835-0c1f-429d-be25-5d2ca95befcf"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[From:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="350" y="29" width="130" height="20" uuid="1cb6b122-c36c-4226-aba2-3dc29fb95eb3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{From}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="600" y="29" width="30" height="20" uuid="e6e4d04e-efa0-4e25-9689-c08b1bd58a64"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[To:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="630" y="29" width="130" height="20" uuid="7c5cf62c-e5dd-41ad-aaf2-f371e9ff4cd5"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{To}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="0" width="740" height="30" uuid="144f4292-e9be-4089-a765-d4d1ad83a6f2"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Machine Times]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="80" y="63" width="80" height="20" backcolor="#F5F5F5" uuid="a4e46e3a-ef34-485a-9ef2-db16ea915ef5"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Workorder]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="160" y="63" width="100" height="20" backcolor="#F5F5F5" uuid="51b66b68-a2ec-48d4-a104-8c2618b3f640"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Equipment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="260" y="63" width="70" height="20" backcolor="#F5F5F5" uuid="2f873b83-ea86-42ce-b614-84e4ca9ad549"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Power]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="331" y="63" width="49" height="20" backcolor="#F5F5F5" uuid="1bee8b0e-f929-4105-834f-19a227fbdac3"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Area]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="380" y="63" width="70" height="20" backcolor="#F5F5F5" uuid="658997ac-3383-4c28-85f1-987fe706b4bf"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Line]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="450" y="63" width="60" height="20" backcolor="#F5F5F5" uuid="e4b8db2e-e0cf-47e0-b6e3-0dd38434319c"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Start time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="510" y="63" width="80" height="20" backcolor="#F5F5F5" uuid="84453b01-c097-43c9-96eb-d3773ea3e465"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[End Time]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="590" y="63" width="90" height="20" backcolor="#F5F5F5" uuid="ad9d3363-bcc9-4e6f-9f42-3a01311b0657"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="0" width="80" height="20" uuid="050a7df9-6d4a-4dac-91bf-3b328f16564f"/>
+				<textFieldExpression><![CDATA[$F{WorkOrder}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="98" height="20" uuid="39960203-0c2e-4a9e-b83a-19f72d9382a9"/>
+				<textFieldExpression><![CDATA[$F{IdEquipment}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="258" y="0" width="71" height="20" uuid="8f869770-fe14-4352-8c5e-b5d7a10c4854"/>
+				<textFieldExpression><![CDATA[$F{Power}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="328" y="0" width="50" height="20" uuid="7ef599ec-d86a-4a05-85d2-0d19e551b627"/>
+				<textFieldExpression><![CDATA[$F{Area}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="0" width="70" height="20" uuid="f114094b-d2b7-48c3-b345-2461c5d4094e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Line}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="448" y="0" width="60" height="20" uuid="d9eb141c-2100-40bb-a6f8-5129d138deff"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{StarTime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="508" y="0" width="80" height="20" uuid="083437eb-70ee-4e6a-b17a-9c5aed4ff10f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{EndTime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="590" y="0" width="88" height="20" uuid="686e013e-ae98-471b-80ce-65ea1b428663"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Time}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

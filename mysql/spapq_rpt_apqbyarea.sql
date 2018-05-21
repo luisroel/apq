@@ -1,84 +1,79 @@
-USE [TIJ]
-GO
-
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-IF EXISTS (SELECT * FROM SYS.OBJECTS WHERE object_id = OBJECT_ID(N'spAPQ_Rpt_APQByArea') AND TYPE in (N'P'))
-    DROP PROCEDURE [dbo].[spAPQ_Rpt_APQByArea]
-GO
-CREATE PROCEDURE [dbo].[spAPQ_Rpt_APQByArea]
-		@IdRuntime		BIGINT
-	,	@Area			INT
-AS
-BEGIN
-	IF @IdRuntime = -1			-- Latest run
-		IF @Area = 0
-			SELECT
+drop procedure if exists `spapq_rpt_apqbyarea`;
+delimiter $$
+create procedure `spapq_rpt_apqbyarea`(
+		idruntime	bigint
+	,	area		int
+)
+begin
+	if idruntime < 1 then	-- latest run
+		if area < 1 then
+			select
 				*
-			FROM
-				[dbo].[v_APQ_Get_IndexByArea] [ND]
-				INNER JOIN [dbo].[v_APQ_Get_DataChartByArea] [DC] ON
-						[DC].[IdRuntime]	= [ND].[IdRuntime]
-					AND [DC].[Area]			= [ND].[Area]
-			WHERE
-				[ND].[IdRuntime] IN (
-					SELECT TOP 1 [IdRuntime] FROM [dbo].[APQ_Runtime] ORDER BY [IdRuntime] DESC
+			from
+				`v_apq_get_indexbyarea` `nd`
+				inner join `v_apq_get_datachartbyarea` `dc` on
+						`dc`.`idruntime`	= `nd`.`idruntime`
+					and `dc`.`area`			= `nd`.`area`
+			where
+				`nd`.`idruntime` in (
+					select max(`idruntime`) from `apq_runtime`
 				)
-			ORDER BY
-				  [DC].[Area]
-				, [DC].[Title]
-				, [DC].[Pos]
-		ELSE
-			SELECT
+			order by
+				  `dc`.`area`
+				, `dc`.`title`
+				, `dc`.`pos`;
+		else
+			select
 				*
-			FROM
-				[dbo].[v_APQ_Get_IndexByArea] [ND]
-				INNER JOIN [dbo].[v_APQ_Get_DataChartByArea] [DC] ON
-						[DC].[IdRuntime]	= [ND].[IdRuntime]
-					AND [DC].[Area]			= [ND].[Area]
-			WHERE
-					[ND].[IdRuntime] IN (
-						SELECT TOP 1 [IdRuntime] FROM [dbo].[APQ_Runtime] ORDER BY [IdRuntime] DESC
+			from
+				`v_apq_get_indexbyarea` `nd`
+				inner join `v_apq_get_datachartbyarea` `dc` on
+						`dc`.`idruntime`	= `nd`.`idruntime`
+					and `dc`.`area`			= `nd`.`area`
+			where
+					`nd`.`idruntime` in (
+						select max(`idruntime`) from `apq_runtime`
 					)
-				AND [ND].[Area]	= @Area
-			ORDER BY
-				  [DC].[Area]
-				, [DC].[Title]
-				, [DC].[Pos]			
-	ELSE IF @Area = 0
-		SELECT
-			*
-		FROM
-			[dbo].[v_APQ_Get_IndexByArea] [ND]
-			INNER JOIN [dbo].[v_APQ_Get_DataChartByArea] [DC] ON
-					[DC].[IdRuntime]	= [ND].[IdRuntime]
-				AND [DC].[Area]			= [ND].[Area]
-		WHERE
-			[ND].[IdRuntime] = @IdRuntime
-		ORDER BY
-			  [DC].[Area]
-			, [DC].[Title]
-			, [DC].[Pos]
-	ELSE
-		SELECT
-			*
-		FROM
-			[dbo].[v_APQ_Get_IndexByArea] [ND]
-			INNER JOIN [dbo].[v_APQ_Get_DataChartByArea] [DC] ON
-					[DC].[IdRuntime]	= [ND].[IdRuntime]
-				AND [DC].[Area]			= [ND].[Area]
-		WHERE
-				[ND].[IdRuntime]	= @IdRuntime
-			AND [ND].[Area]			= @Area
-		ORDER BY
-			  [DC].[Area]
-			, [DC].[Title]
-			, [DC].[Pos]
-END
-GO
+				and `nd`.`area`	= area
+			order by
+				  `dc`.`area`
+				, `dc`.`title`
+				, `dc`.`pos`;
+		end if;
+	else
+		if area < 1 then
+			select
+				*
+			from
+				`v_apq_get_indexbyarea` `nd`
+				inner join `v_apq_get_datachartbyarea` `dc` on
+						`dc`.`idruntime`	= `nd`.`idruntime`
+					and `dc`.`area`			= `nd`.`area`
+			where
+				`nd`.`idruntime` = idruntime
+			order by
+				  `dc`.`area`
+				, `dc`.`title`
+				, `dc`.`pos`;
+		else
+			select
+				*
+			from
+				`v_apq_get_indexbyarea` `nd`
+				inner join `v_apq_get_datachartbyarea` `dc` on
+						`dc`.`idruntime`	= `nd`.`idruntime`
+					and `dc`.`area`			= `nd`.`area`
+			where
+					`nd`.`idruntime`	= idruntime
+				and `nd`.`area`			= area
+			order by
+				  `dc`.`area`
+				, `dc`.`title`
+				, `dc`.`pos`;
+		end if;
+	end if;
+end;
+$$
+delimiter ;
 
 
