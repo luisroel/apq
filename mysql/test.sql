@@ -1,28 +1,5 @@
 
 EXECUTE `spapq_execute_runtime` '5/1/2017 00:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 01:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 02:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 03:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 04:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 05:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 06:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 07:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 08:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 09:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 10:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 11:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 12:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 13:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 14:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 15:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 16:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 17:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 18:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 19:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 20:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 21:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 22:00'
-EXECUTE `spapq_execute_runtime` '5/1/2018 23:00'
 
 -- Settings (Config)
 select * from `apq_settings`
@@ -172,3 +149,12 @@ WHERE
 
 select [RT`.[IdRuntime` AS [Value`, CONCAT(FORMAT([RT`.[from`, 'MM/dd/yyyy'), ' - ', FORMAT([RT`.[To`, 'MM/dd/yyyy')) AS [Title` from `apq_Runtime` [RT`
 EXEC `spapq_Rpt_Counts` 1, 
+
+
+
+==========================================================================================================================================
+
+
+
+
+

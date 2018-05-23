@@ -1,6 +1,6 @@
 drop procedure if exists `spapq_execute_runtime`;
 delimiter $$
-create procedure `spapq_call_runtime`(
+create procedure `spapq_execute_runtime`(
 	idruntime	bigint
 )
 begin

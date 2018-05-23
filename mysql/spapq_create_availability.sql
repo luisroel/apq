@@ -1,55 +1,47 @@
-USE [TIJ]
-GO
+drop procedure if exists `spapq_create_availability`;
+delimiter $$
+create procedure `spapq_create_availability`(
+	  idruntime	bigint
+	, fromdate	datetime
+	, todate	datetime
+)
+begin
 
-SET ANSI_NULLS ON
-GO
+	-- Delete previuos records
+	delete from `apq_availability` where `idruntime` = idruntime;
 
-SET QUOTED_IDENTIFIER ON
-GO
+	set @current_date = fromdate;
+	while @current_date <= todate do
 
-IF EXISTS (SELECT * FROM SYS.OBJECTS WHERE object_id = OBJECT_ID(N'spAPQ_Create_Availability') AND TYPE in (N'P'))
-    DROP PROCEDURE [dbo].[spAPQ_Create_Availability]
-GO
-CREATE    PROCEDURE [dbo].[spAPQ_Create_Availability]
-	  @IdRuntime	BIGINT
-	, @FromDate		DATETIME
-	, @ToDate		DATETIME
-AS
-BEGIN
-	DECLARE @CurrentDate DATETIME
-	DECLARE @DayOfWeek	INT
-	DECLARE @Working	DECIMAL
-	DECLARE @Off		DECIMAL
-	DECLARE @Break		DECIMAL
+		set @day_of_week = weekday(@current_date);
+        if @day_of_week = 6 then
+			set @day_of_week = 1;
+		else
+			set @day_of_week = @day_of_week + 2;
+		end if;
 
-	SELECT
-		@CurrentDate = @FromDate
-	WHILE @CurrentDate <= @ToDate
-	BEGIN
-		SELECT
-			@DayOfWeek = DATEPART(WEEKDAY, @CurrentDate)
+		set @working	= 0;
+		set @days_off	= 0;
+		set @break		= 0;
+		if exists(select * from `apq_scheduletemplate` `st` where `st`.`dayofweek` = @day_of_week) then
+			select
+				  `st`.`working`
+				, `st`.`off`
+				, `st`.`break`
+                into 
+                  @working
+                , @days_off
+                , @break
+			from
+				`apq_scheduletemplate` `st`
+			where
+				`st`.`dayofweek` = @day_of_week;
+		end if;
 
-		IF EXISTS(SELECT * FROM [dbo].[APQ_ScheduleTemplate] [ST] WHERE [ST].[DayOfWeek] = @DayOfWeek)
-			SELECT
-				  @Working	= [ST].[Working]
-				, @Off		= [ST].[Off]
-				, @Break	= [ST].[Break]
-			FROM
-				[dbo].[APQ_ScheduleTemplate] [ST]
-			WHERE 
-				[ST].[DayOfWeek] = @DayOfWeek
-		ELSE
-			SELECT
-				  @Working	= 0
-				, @Off		= 0
-				, @Break	= 0
-
-		INSERT INTO [dbo].[APQ_Availability] ([IdRuntime], [Date], [DayOfWeek], [Working], [Off], [Break]) VALUES (@IdRuntime, @CurrentDate, @DayOfWeek, @Working, @Break, @Off)
-
-		SELECT
-			@CurrentDate = DATEADD(DAY, 1, @CurrentDate)
-	END
-END
-GO
-
+		insert into `apq_availability`(`idruntime`, `date`, `dayofweek`, `working`, `off`, `break`) values (idruntime, @current_date, @day_of_week, @working, @days_off, @break);
+		set @current_date = date_add(@current_date, interval 1 day);
+	end while;
+end;
+$$
+delimiter ;
 

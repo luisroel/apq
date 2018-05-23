@@ -24,6 +24,7 @@ BEGIN
 
 	SELECT
 		@CurrentDate = @FromDate
+
 	WHILE @CurrentDate <= @ToDate
 	BEGIN
 		SELECT

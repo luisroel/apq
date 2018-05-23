@@ -29,12 +29,12 @@ insert into `apq_daysoff` ()
 drop table if exists `apq_scheduletemplate`;
 create table `apq_scheduletemplate` (
 	  `dayofweek`	int
-	, `working`		decimal
-	, `break`		decimal
-	, `off`			decimal
+	, `working`		float
+	, `break`		float
+	, `off`			float
 );
 
-insert into `apq_scheduletemplate` (`dayofweek`, `working`, `off`, `break`) 
+insert into `apq_scheduletemplate` (`dayofweek`, `working`, `break`, `off`) 
 	  values ( 1, 0, 0, 24)
 	, ( 2, 23, 1, 0)
 	, ( 3, 23, 1, 0)
@@ -49,9 +49,9 @@ create table `apq_availability` (
 	  `idruntime`	bigint
 	, `date`		datetime
 	, `dayofweek`	int
-	, `working`		decimal
-	, `break`		decimal
-	, `off`			decimal
+	, `working`		float
+	, `break`		float
+	, `off`			float
 );
 
 -- Raw data
@@ -72,7 +72,7 @@ create table `apq_stops` (
 	, `idparo`			varchar(10)
 	, `tipoparo`		varchar(100)
 	, `clasification`	varchar(50)
-	, `time`			decimal
+	, `time`			float
 );
 
 drop table if exists `apq_prodtimes`;
@@ -82,7 +82,7 @@ create table `apq_prodtimes` (
 	, `idequipment`		varchar(20)
 	, `starttime`		datetime
 	, `endtime`			datetime
-	, `time`			decimal
+	, `time`			float
 );
 
 drop table if exists `apq_counts`;
@@ -91,13 +91,13 @@ create table `apq_counts` (
 	, `itemid`			varchar(35)
 	, `idequipment`		varchar(20)
 	, `date`			datetime
-	, `cycletime`		decimal
-	, `goodcount`		decimal
-	, `badcount`		decimal
-	, `totalcount`		decimal
-	, `goodtime`			decimal
-	, `losstime`		decimal
-	, `totaltime`		decimal
+	, `cycletime`		float
+	, `goodcount`		float
+	, `badcount`		float
+	, `totalcount`		float
+	, `goodtime`		float
+	, `losstime`		float
+	, `totaltime`		float
 );
 
 drop table if exists `apq_setupandstart`;
@@ -107,55 +107,59 @@ create table `apq_setupandstart` (
 	, `idequipment`		varchar(20)
 	, `date`			datetime
 	, `idusm`			varchar(15)
-	, `stdsetuptime`	decimal
-	, `stdstarttime`	decimal
+	, `actsetuptime`	float
+	, `actstarttime`	float
+	, `stdsetuptime`	float
+	, `stdstarttime`	float
 );
 
 -- Summary
 drop table if exists `apq_availabilitysummary`;
 create table `apq_availabilitysummary` (
 	  `idruntime`				bigint
-	, `plannedproductiontime`	decimal
-	, `plannedstop`				decimal
-	, `scheduleLoss`			decimal
+	, `plannedproductiontime`	float
+	, `plannedstop`				float
+	, `scheduleLoss`			float
 );
 
 drop table if exists `apq_equipmentsummary`;
 create table `apq_equipmentsummary` (
 	  `idruntime`	bigint
-	, `power`		decimal
-	, `total`		decimal
+	, `power`		float
+	, `total`		float
 );
 
 drop table if exists `apq_prodtimessummary`;
 create table `apq_prodtimessummary` (
 	  `idruntime`		bigint
-	, `time`			decimal
+	, `time`			float
 );
 
 drop table if exists `apq_stopssummary`;
 create table `apq_stopssummary` (
 	  `idruntime`		bigint
 	, `clasification`	varchar(50)
-	, `time`			decimal
+	, `time`			float
 );
 
 drop table if exists `apq_countssummary`;
 create table `apq_countssummary` (
 	  `idruntime`		bigint
-	, `goodcount`		decimal
-	, `badcount`		decimal
-	, `totalcount`		decimal
-	, `goodtime`			decimal
-	, `losstime`		decimal
-	, `totaltime`		decimal
+	, `goodcount`		float
+	, `badcount`		float
+	, `totalcount`		float
+	, `goodtime`			float
+	, `losstime`		float
+	, `totaltime`		float
 );
 
 drop table if exists `apq_setupandstartsummary`;
 create table `apq_setupandstartsummary` (
 	  `idruntime`		bigint
-	, `stdsetuptime`	decimal
-	, `stdstarttime`	decimal
+	, `actsetuptime`	float
+	, `actstarttime`	float
+	, `stdsetuptime`	float
+	, `stdstarttime`	float
 );
 
 -- BY AREA
@@ -163,25 +167,25 @@ drop table if exists `apq_availabilitybyarea`;
 create table `apq_availabilitybyarea` (
 	  `idruntime`				bigint
 	, `area`					int
-	, `numequipments`			decimal
-	, `plannedproductiontime`	decimal
-	, `plannedstop`				decimal
-	, `scheduleloss`			decimal
+	, `numequipments`			float
+	, `plannedproductiontime`	float
+	, `plannedstop`				float
+	, `scheduleloss`			float
 );
 
 drop table if exists `apq_equipmentbyarea`;
 create table `apq_equipmentbyarea` (
 	  `idruntime`	bigint
 	, `area`		int
-	, `power`		decimal
-	, `total`		decimal
+	, `power`		float
+	, `total`		float
 );
 
 drop table if exists `apq_prodtimesbyarea`;
 create table `apq_prodtimesbyarea` (
 	  `idruntime`		bigint
 	, `area`			int
-	, `time`			decimal
+	, `time`			float
 );
 
 
@@ -190,27 +194,29 @@ create table `apq_stopsbyarea` (
 	  `idruntime`		bigint
 	, `area`			int
 	, `clasification`	varchar(50)
-	, `time`			decimal
+	, `time`			float
 );
 
 drop table if exists `apq_countsbyarea`;
 create table `apq_countsbyarea` (
 	  `idruntime`		bigint
 	, `area`			int
-	, `goodcount`		decimal
-	, `badcount`		decimal
-	, `totalcount`		decimal
-	, `goodtime`			decimal
-	, `losstime`		decimal
-	, `totaltime`		decimal
+	, `goodcount`		float
+	, `badcount`		float
+	, `totalcount`		float
+	, `goodtime`			float
+	, `losstime`		float
+	, `totaltime`		float
 );
 
 drop table if exists `apq_setupandstartbyarea`;
 create table `apq_setupandstartbyarea` (
 	  `idruntime`		bigint
 	, `area`			int
-	, `stdsetuptime`	decimal
-	, `stdstarttime`	decimal
+	, `actsetuptime`	float
+	, `actstarttime`	float
+	, `stdsetuptime`	float
+	, `stdstarttime`	float
 );
 
 -- BY LINE
@@ -220,9 +226,9 @@ create table `apq_availabilitybyline` (
 	, `area`					int
 	, `line`					int
 	, `numEquipments`			int
-	, `plannedproductiontime`	decimal
-	, `plannedstop`				decimal
-	, `scheduleLoss`			decimal
+	, `plannedproductiontime`	float
+	, `plannedstop`				float
+	, `scheduleLoss`			float
 );
 
 drop table if exists `apq_equipmentbyline`;
@@ -230,8 +236,8 @@ create table `apq_equipmentbyline` (
 	  `idruntime`	bigint
 	, `area`		int
 	, `line`		int
-	, `power`		decimal
-	, `total`		decimal
+	, `power`		float
+	, `total`		float
 );
 
 drop table if exists `apq_prodtimesbyline`;
@@ -239,7 +245,7 @@ create table `apq_prodtimesbyline` (
 	  `idruntime`		bigint
 	, `area`			int
 	, `line`			int
-	, `time`			decimal
+	, `time`			float
 );
 
 
@@ -249,7 +255,7 @@ create table `apq_stopsbyline` (
 	, `area`			int
 	, `line`			int
 	, `clasification`	varchar(50)
-	, `time`			decimal
+	, `time`			float
 );
 
 drop table if exists `apq_countsbyline`;
@@ -257,12 +263,12 @@ create table `apq_countsbyline` (
 	  `idruntime`		bigint
 	, `area`			int
 	, `line`			int
-	, `goodcount`		decimal
-	, `badcount`		decimal
-	, `totalcount`		decimal
-	, `goodtime`		decimal
-	, `losstime`		decimal
-	, `totaltime`		decimal
+	, `goodcount`		float
+	, `badcount`		float
+	, `totalcount`		float
+	, `goodtime`		float
+	, `losstime`		float
+	, `totaltime`		float
 );
 
 drop table if exists `apq_setupandstartbyline`;
@@ -270,8 +276,10 @@ create table `apq_setupandstartbyline` (
 	  `idruntime`		bigint
 	, `area`			int
 	, `line`			int
-	, `stdsetuptime`	decimal
-	, `stdstarttime`	decimal
+	, `actsetuptime`	float
+	, `actstarttime`	float
+	, `stdsetuptime`	float
+	, `stdstarttime`	float
 );
 
 -- BY EQUIPMENT
@@ -279,9 +287,9 @@ drop table if exists `apq_availabilitybyequipment`;
 create table `apq_availabilitybyequipment` (
 	  `idruntime`				bigint
 	, `idequipment`				varchar(20)
-	, `plannedproductiontime`	decimal
-	, `schedulesoss`			decimal
-	, `plannedstop`				decimal
+	, `plannedproductiontime`	float
+	, `schedulesoss`			float
+	, `plannedstop`				float
 )
 ;
 
@@ -291,7 +299,7 @@ create table `apq_prodtimesbyequipment` (
 	, `area`			int
 	, `line`			int
 	, `idequipment`		varchar(20)
-	, `time`			decimal
+	, `time`			float
 )
 ;
 
@@ -302,7 +310,7 @@ create table `apq_stopsbyequipment` (
 	, `line`			int
 	, `idequipment`		varchar(20)
 	, `clasification`	varchar(50)
-	, `time`			decimal
+	, `time`			float
 );
 
 drop table if exists `apq_countsbyequipment`;
@@ -311,12 +319,12 @@ create table `apq_countsbyequipment` (
 	, `area`			int
 	, `line`			int
 	, `idequipment`		varchar(20)
-	, `goodcount`		decimal
-	, `badcount`		decimal
-	, `totalcount`		decimal
-	, `goodtime`		decimal
-	, `losstime`		decimal
-	, `totaltime`		decimal
+	, `goodcount`		float
+	, `badcount`		float
+	, `totalcount`		float
+	, `goodtime`		float
+	, `losstime`		float
+	, `totaltime`		float
 );
 
 
@@ -326,6 +334,8 @@ create table `apq_setupandstartbyequipment` (
 	, `area`			int
 	, `line`			int
 	, `idequipment`		varchar(20)
-	, `stdsetuptime`	decimal
-	, `stdstarttime`	decimal
+	, `actsetuptime`	float
+	, `actstarttime`	float
+	, `stdsetuptime`	float
+	, `stdstarttime`	float
 );
