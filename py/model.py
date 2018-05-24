@@ -230,27 +230,65 @@ class model:
 	"""
 		parms = ( from_date, to_date, id_runtime )
 	"""
-	def execute_runtime(self, parms):
-		# 
-		sql_sentence = "SELECT [CM].[IdCambioMolde], [CM].[Maquina], [CM].[fechacambio], [PP].[US MOLD #], (CASE WHEN [M3].[HrIniCambio] IS NULL OR [M3].[HrFinCambio] IS NULL THEN DATEPART(HOUR,[ML].[STDMolde])*60 + DATEPART(MINUTE,[ML].[STDMolde]) ELSE DATEDIFF(MINUTE, [M3].[HrIniCambio], [M3].[HrFinCambio]) END)	AS [ActualSetupTime], (CASE	WHEN [M3].[HrIniMaq] IS NULL OR [M3].[HrIniProd] IS NULL THEN DATEPART(HOUR,[ML].[STDInicio])*60 + DATEPART(MINUTE,[ML].[STDInicio]) ELSE DATEDIFF(MINUTE, [M3].[HrIniMaq], [M3].[HrIniProd]) END) AS [ActualStartTime], DATEPART(HOUR, [ML].[STDInicio])*60*60 + DATEPART(MINUTE, [ML].[STDInicio])*60	AS [Start], DATEPART(HOUR, [ML].[STDMolde])*60*60 + DATEPART(MINUTE, [ML].[STDMolde])*60 AS [Setup] FROM [dbo].[CAMBIOMOLDE] [CM] LEFT JOIN [dbo].[Moldat03] [M3] ON [M3].[WO] = [CM].[IdCambioMolde] LEFT JOIN [dbo].[PARTS_PLASTIC] [PP] ON [PP].[No_PP] = [CM].[No_PP] LEFT JOIN [dbo].[MOLDS] [ML] ON [ML].[MoldeTXT] = [PP].[US MOLD #] WHERE [CM].[FechaCambio] >= '%s' AND [CM].[FechaCambio] < '%s';" % ( parms[0], parms[1] )
-		table = self.conn.remote_execute_sql_table_return(sql_sentence)
-
-		# delete previuos rows
-		sql_sentence = "delete from apq_setupandstart where idruntime = %s;" % parms[2]
-		self.conn.local_execute_sql_noreturn(sql_sentence)
-
-		# local execution
-		for row in table:
-			sql_sentence = "insert into apq_setupandstart( idruntime, workorder, idequipment, date, idusm, actsetuptime, actstarttime, stdsetuptime, stdstarttime ) values ( %s, '%s', '%s', '%s', '%s', %s, %s, %s, %s);" % ( parms[2], row[0], row[1], unicode(row[2]), row[3], row[4], row[5], row[6], row[7] )
-			self.conn.local_execute_sql_noreturn(sql_sentence)
+	def create_availability(self, parms):
+		"""
+		"""
+		sql_sentence = "call `spapq_create_availability`(%s, '%s', '%s');" % ( parms[2], parms[0], parms[1] )
+		id = self.conn.local_execute_sql_noreturn(sql_sentence)
+		return id
 
 	"""
-		parms = ( from_date, to_date )
+		cut_off_date
 	"""
-	def runner(self, parms):
-		ext_parms = parms + ( 1, )
+	def create_runtime(self, cut_off_date):
+		# remote execution
+		"""
+			insert into `apq_runtime` (`from`, `to`, `period`)
+			select
+			      date_add(@cut_off_date, interval -1*`st`.`period` day)	-- as `from_date`
+				, @cut_off_date												-- as `to_date`
+				, `st`.`period`
+			from
+				`apq_settings` 	`st`;
+		"""
+		sql_sentence = "insert into `apq_runtime` (`from`, `to`, `period`) select date_add('%s', interval -1*`st`.`period` day), '%s', `st`.`period` from `apq_settings` `st`;" % (cut_off_date, cut_off_date)
+		id = self.conn.local_execute_sql_id_return(sql_sentence)
+		return id
+
+	"""
+		cut_off_date
+	"""
+	def get_runtime_dates(self, idruntime):
+		# remote execution
+		"""
+			select * from `apq_runtime` where `idruntime` = 1;
+		"""
+		sql_sentence = "select `rt`.`from`, `rt`.`to` from `apq_runtime` `rt` where `rt`.`idruntime` = %s;" % idruntime
+		table = self.conn.local_execute_sql_table_return(sql_sentence)
+		return table[0]
+
+	"""
+		id_runtime
+	"""
+	def execute_runtime(self, idruntime):
+		"""
+		"""
+		sql_sentence = "call `spapq_execute_runtime`(%s);" % idruntime
+		id = self.conn.local_execute_sql_noreturn(sql_sentence)
+		return id
+
+	"""
+		cut_off_date
+	"""
+	def runner(self, cut_off_date):
+		idruntime = self.create_runtime(cut_off_date)
+		dates = self.get_runtime_dates(idruntime)
+		ext_parms = dates + ( idruntime, )
 		self.create_stops(ext_parms)
 		self.create_counts(ext_parms)
 		self.create_equipments(ext_parms)
 		self.create_prodtimes(ext_parms)
 		self.create_setup_and_starts(ext_parms)
+		self.create_availability(ext_parms)
+		self.execute_runtime(idruntime)
+

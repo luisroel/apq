@@ -27,7 +27,7 @@ class connection_db:
 		cursor.execute(sql_sentence)
 		row = cursor.fetchone()
 		while row:
-			row = cursor.fetchone()  
+			row = cursor.fetchone()
 		conn.commit()
 		conn.close()
 
@@ -59,7 +59,6 @@ class connection_db:
 
 		# Sentence execution
 		cursor.execute(sql_sentence, ())
-		emp_no = cursor.lastrowid
 		conn.commit()
 
 		cursor.close()
@@ -80,23 +79,22 @@ class connection_db:
 		  table.append(row)
 
 		cursor.close()
-		cnx.close()
+		conn.close()
 		return table
 
 	"""
 	"""
-	def local_execute_sql_escalar_return(self, sql_sentence):
-		table = []
+	def local_execute_sql_id_return(self, sql_sentence):
 		# Connection
 		parms_db = self.config_db.get_local_db_parms()
 		conn = mysql.connector.connect(**parms_db)
 		cursor = conn.cursor()
 
+		# Sentence execution
 		cursor.execute(sql_sentence, ())
-
-		for row in cursor:
-		  table.append(row)
+		id = cursor.lastrowid
+		conn.commit()
 
 		cursor.close()
-		cnx.close()
-		return table
+		conn.close()
+		return id

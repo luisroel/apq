@@ -9,8 +9,10 @@ as
 		, (`ct`.`goodtime` / 60.0 / 60.0)		as `goodtime`
 		, (`ct`.`losstime` / 60.0 / 60.0)		as `losstime`
 		, (`ct`.`totaltime` / 60.0 / 60.0)		as `producedtime`
-		, (`ss`.`stdsetuptime` / 60.0 / 60.0)	as `stdSetuptime`
-		, (`ss`.`stdstarttime` / 60.0 / 60.0)	as `stdStarttime`
+		, (`ss`.`actsetuptime` / 60.0 / 60.0)	as `actsetuptime`
+		, (`ss`.`actstarttime` / 60.0 / 60.0)	as `actstarttime`
+		, (`ss`.`stdsetuptime` / 60.0 / 60.0)	as `stdsetuptime`
+		, (`ss`.`stdstarttime` / 60.0 / 60.0)	as `stdstarttime`
 		, `ps`.`time` / 60.0					as `actualprodtime`
 	from
 		`apq_countssummary` `ct`

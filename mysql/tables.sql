@@ -5,14 +5,6 @@ create table `apq_settings` (
 
 insert into `apq_settings` (`period` ) values (30);
 
-drop table if exists `apq_runtime`;
-create table `apq_runtime` (
-	    `idruntime`	bigint auto_increment primary key
-	  , `from`		datetime
-	  , `to`		datetime
-	  , `period`	int
-);
-
 drop table if exists `apq_daysoff`;
 create table `apq_daysoff` (
 	    `date`			datetime
@@ -41,8 +33,15 @@ insert into `apq_scheduletemplate` (`dayofweek`, `working`, `break`, `off`)
 	, ( 4, 23, 1, 0)
 	, ( 5, 23, 1, 0)
 	, ( 6, 23, 1, 0)
-	, ( 7, 23, 1, 0)
 	, ( 8, 14, 0, 10);
+
+drop table if exists `apq_runtime`;
+create table `apq_runtime` (
+	    `idruntime`	bigint auto_increment primary key
+	  , `from`		datetime
+	  , `to`		datetime
+	  , `period`	int
+);
 
 drop table if exists `apq_availability`;
 create table `apq_availability` (

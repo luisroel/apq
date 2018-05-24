@@ -6,7 +6,6 @@ create procedure `spapq_create_availability`(
 	, todate	datetime
 )
 begin
-
 	-- Delete previuos records
 	delete from `apq_availability` where `idruntime` = idruntime;
 
