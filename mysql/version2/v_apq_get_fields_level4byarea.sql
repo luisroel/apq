@@ -1,5 +1,5 @@
-drop view if exists `v_apq_get_fields_level4`;
-create view `v_apq_get_fields_level4`
+drop view if exists `v_apq_get_fields_level4byarea`;
+create view `v_apq_get_fields_level4byarea`
 as
 	select
 		  `vl`.*
@@ -7,4 +7,4 @@ as
 		, (`vl`.`nom_setup_time` + `vl`.`nom_start_time` + `vl`.`nom_total_count_time`) / `vl`.`runtime` 	as `ip_index`
 		, (`vl`.`good_count` / `vl`.`total_count`) 															as `iq_index`
 	from
-		`v_apq_get_fields_level3` `vl`;
+		`v_apq_get_fields_level3byarea` `vl`;

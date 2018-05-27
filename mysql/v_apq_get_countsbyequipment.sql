@@ -9,14 +9,14 @@ as
 		, `ct`.`goodcount`
 		, `ct`.`badcount`
 		, `ct`.`totalcount`
-		, (`ct`.`goodtime` / 60.0 / 60.0)		as `goodtime`
-		, (`ct`.`losstime` / 60.0 / 60.0)		as `losstime`
-		, (`ct`.`totaltime` / 60.0 / 60.0)		as `producedtime`
-		, (`ss`.`actsetupTime` / 60.0 / 60.0)	as `actsetuptime`
-		, (`ss`.`actstartTime` / 60.0 / 60.0)	as `actstarttime`
-		, (`ss`.`stdsetupTime` / 60.0 / 60.0)	as `stdsetuptime`
-		, (`ss`.`stdstartTime` / 60.0 / 60.0)	as `stdstarttime`
-		, `ps`.`time` / 60.0					as `actualprodtime`
+		, (`ct`.`goodtime` / 60.0 / 60.0)	as `goodtime`
+		, (`ct`.`losstime` / 60.0 / 60.0)	as `losstime`
+		, (`ct`.`totaltime` / 60.0 / 60.0)	as `producedtime`
+		, (`ss`.`actsetupTime` / 60.0)		as `actsetuptime`
+		, (`ss`.`actstartTime` / 60.0)		as `actstarttime`
+		, (`ss`.`stdsetupTime` / 60.0)		as `stdsetuptime`
+		, (`ss`.`stdstartTime` / 60.0)		as `stdstarttime`
+		, `ps`.`time` / 60.0				as `actualprodtime`
 	from
 		`apq_countsbyequipment` `ct`
 		inner join `apq_setupandstartbyequipment` `ss` on

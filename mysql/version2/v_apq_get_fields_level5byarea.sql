@@ -1,9 +1,10 @@
-drop view if exists `v_apq_get_fields_level5`;
-create view `v_apq_get_fields_level5`
+drop view if exists `v_apq_get_fields_level5byarea`;
+create view `v_apq_get_fields_level5byarea`
 as
 	select
 		  `rt`.`idruntime`
 		, `rt`.`to`															as `time`
+		, `vl`.`area`
         
 		, `vl`.`schedule_loss`
         , (`vl`.`schedule_loss` * 100.0 / `vl`.`total_time`)				as `schedule_loss_chart`
@@ -67,5 +68,5 @@ as
 
 	from
 		`apq_runtime` `rt`
-		inner join `v_apq_get_fields_level4` `vl` on
+		inner join `v_apq_get_fields_level4byarea` `vl` on
 			`rt`.`idruntime` = `vl`.`idruntime`;

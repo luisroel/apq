@@ -16,7 +16,7 @@ begin
 		, SUM(`ct`.`goodcount`)
 		, SUM(`ct`.`badcount`)
 		, SUM(`ct`.`totalcount`)
-		, SUM(`ct`.`goodtime`) / 60.0
+		, SUM(`ct`.`goodtime`)  / 60.0
 		, SUM(`ct`.`losstime`) / 60.0
 		, SUM(`ct`.`totaltime`) / 60.0
 	FROM
