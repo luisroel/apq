@@ -6,19 +6,19 @@ as
 		, `rt`.`to`															as `time`
 
         , `vl`.`area`														as `area`
-        , `vl`.`schedule_loss`                                                  as `schedule_loss`
-        , (`vl`.`schedule_loss` * 100.0 / `vl`.`total_time`)			as `schedule_loss_chart`
-        , (`vl`.`schedule_loss` / `vl`.`total_time`)				as `schedule_loss_label`
-		, `vl`.`planned_stop`						as `planned_stop`
-        , (`vl`.`planned_stop` * 100.0 / `vl`.`total_time`)			as `planned_stop_chart`
-        , (`vl`.`planned_stop` / `vl`.`total_time`)				as `planned_stop_label`
-		, `vl`.`nom_iddle_time`						as `nom_iddle_time`
-        , (`vl`.`nom_iddle_time` * 100.0 / `vl`.`total_time`)			as `nom_iddle_time_chart`
-        , (`vl`.`nom_iddle_time` / `vl`.`total_time`)				as `nom_iddle_time_label`
-		, `vl`.`nom_production_time`					as `nom_production_time`
-        , (`vl`.`nom_production_time` * 100.0 / `vl`.`total_time`) 		as `nom_production_time_chart`
-        , (`vl`.`nom_production_time` / `vl`.`total_time`) 			as `nom_production_time_label`
-		, `vl`.`total_time`						as `total_time`
+        , `vl`.`schedule_loss`												as `schedule_loss`
+        , (`vl`.`schedule_loss` * 100.0 / `vl`.`total_time`)				as `schedule_loss_chart`
+        , (`vl`.`schedule_loss` / `vl`.`total_time`)						as `schedule_loss_label`
+		, `vl`.`planned_stop`												as `planned_stop`
+        , (`vl`.`planned_stop` * 100.0 / `vl`.`total_time`)					as `planned_stop_chart`
+        , (`vl`.`planned_stop` / `vl`.`total_time`)							as `planned_stop_label`
+		, `vl`.`nom_iddle_time`												as `nom_iddle_time`
+        , (`vl`.`nom_iddle_time` * 100.0 / `vl`.`total_time`)				as `nom_iddle_time_chart`
+        , (`vl`.`nom_iddle_time` / `vl`.`total_time`)						as `nom_iddle_time_label`
+		, `vl`.`nom_production_time`										as `nom_production_time`
+        , (`vl`.`nom_production_time` * 100.0 / `vl`.`total_time`) 			as `nom_production_time_chart`
+        , (`vl`.`nom_production_time` / `vl`.`total_time`) 					as `nom_production_time_label`
+		, `vl`.`total_time`													as `total_time`
         , 100.0 															as `total_time_chart`
 
 		, `vl`.`act_iddle_time`						as `act_iddle_time`
@@ -49,11 +49,11 @@ as
 
 		, `vl`.`quality_loss`												as `quality_loss`
         , (`vl`.`quality_loss_index` * 100.0) 
-		* (`vl`.`act_running_time` / `vl`.`total_time`)						as `quality_loss_chart`
+		* (`vl`.`act_production_time` / `vl`.`total_time`)					as `quality_loss_chart`
         , `vl`.`quality_loss_index`											as `quality_loss_label`
         , `vl`.`quality_good`												as `quality_good`
         , (`vl`.`quality_good_index` * 100.0 )
-		* (`vl`.`act_running_time`/`vl`.`total_time`)						as `quality_good_chart`
+		* (`vl`.`act_production_time`/`vl`.`total_time`)					as `quality_good_chart`
 		, `vl`.`quality_good_index`											as `quality_good_label`
 		, `vl`.`quality_total`												as `quality_total`
 		, `vl`.`iq_index`													as `iq_index`

@@ -14,8 +14,8 @@ as
 		, `av`.`time_for_production` - `ct`.`act_production_time`	as `act_iddle_time`
 
 		, `av`.`stop_time`											as `availability_time_loss`
-		, `ct`.`nom_production_time` - `av`.`stop_time` 			as `availability_time`
-		, `ct`.`nom_production_time`								as `availability_total`
+		, `ct`.`act_production_time` - `av`.`stop_time` 			as `availability_time`
+		, `ct`.`act_production_time`								as `availability_total`
 
 		, (`ct`.`act_production_time` - `ct`.`nom_production_time`) as `performance_time_loss`
 		, `ct`.`nom_production_time` 								as `performance_time`

@@ -16,9 +16,9 @@ begin
 		, SUM(`ct`.`goodcount`)
 		, SUM(`ct`.`badcount`)
 		, SUM(`ct`.`totalcount`)
-		, SUM(`ct`.`goodtime`)  / 60.0
-		, SUM(`ct`.`losstime`) / 60.0
-		, SUM(`ct`.`totaltime`) / 60.0
+		, SUM(`ct`.`goodtime`)
+		, SUM(`ct`.`losstime`)
+		, SUM(`ct`.`totaltime`)
 	FROM
 		`apq_counts` `ct`
 		inner join `apq_equipment` `eq` on

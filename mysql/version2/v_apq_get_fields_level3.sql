@@ -48,11 +48,11 @@ as
 
 		, `vl`.`quality_loss`												as `quality_loss`
         , (`vl`.`quality_loss_index` * 100.0) 
-		* (`vl`.`act_running_time` / `vl`.`total_time`)						as `quality_loss_chart`
+		* (`vl`.`act_production_time` / `vl`.`total_time`)					as `quality_loss_chart`
         , `vl`.`quality_loss_index`											as `quality_loss_label`
         , `vl`.`quality_good`												as `quality_good`
         , (`vl`.`quality_good_index` * 100.0 )
-		* (`vl`.`act_running_time`/`vl`.`total_time`)						as `quality_good_chart`
+		* (`vl`.`act_production_time`/`vl`.`total_time`)					as `quality_good_chart`
 		, `vl`.`quality_good_index`											as `quality_good_label`
 		, `vl`.`quality_total`												as `quality_total`
 		, `vl`.`iq_index`													as `iq_index`
