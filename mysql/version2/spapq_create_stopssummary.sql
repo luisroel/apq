@@ -17,6 +17,7 @@ begin
 		`apq_stops` `ss`
 	where
 		`ss`.`idruntime` = idruntime
+        and `ss`.`idequipment` <> 'None'
 	group by
 		`ss`.`clasification`;
 end;

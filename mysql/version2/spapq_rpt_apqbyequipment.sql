@@ -14,7 +14,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -34,7 +34,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -57,7 +57,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -78,7 +78,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -104,7 +104,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -125,7 +125,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -149,7 +149,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -171,7 +171,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -200,7 +200,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -218,7 +218,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -239,7 +239,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -258,7 +258,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -282,7 +282,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -301,7 +301,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -323,7 +323,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`
@@ -343,7 +343,7 @@ begin
 					select
 						*
 					from
-						`v_apq_get_fields_level5byequipment` `nd`
+						`v_apq_get_fields_level3byequipment` `nd`
 						inner join `v_apq_get_datachartbyequipment` `dc` on
 								`dc`.`idruntime`	= `nd`.`idruntime`
 							and `dc`.`area`			= `nd`.`area`

@@ -71,16 +71,6 @@ mysql -u developer -pTest.01 reports < v_apq_get_fields_level3byarea.sql
 mysql -u developer -pTest.01 reports < v_apq_get_fields_level3byline.sql
 mysql -u developer -pTest.01 reports < v_apq_get_fields_level3byequipment.sql
 
-mysql -u developer -pTest.01 reports < v_apq_get_fields_level4.sql
-mysql -u developer -pTest.01 reports < v_apq_get_fields_level4byarea.sql
-mysql -u developer -pTest.01 reports < v_apq_get_fields_level4byline.sql
-mysql -u developer -pTest.01 reports < v_apq_get_fields_level4byequipment.sql
-
-mysql -u developer -pTest.01 reports < v_apq_get_fields_level5.sql
-mysql -u developer -pTest.01 reports < v_apq_get_fields_level5byarea.sql
-mysql -u developer -pTest.01 reports < v_apq_get_fields_level5byline.sql
-mysql -u developer -pTest.01 reports < v_apq_get_fields_level5byequipment.sql
-
 mysql -u developer -pTest.01 reports < v_apq_get_datachart.sql
 mysql -u developer -pTest.01 reports < v_apq_get_datachartbyarea.sql
 mysql -u developer -pTest.01 reports < v_apq_get_datachartbyline.sql

@@ -10,7 +10,7 @@ begin
 			select
 				*
 			from
-				`v_apq_get_fields_level5byarea` `nd`
+				`v_apq_get_fields_level3byarea` `nd`
 				inner join `v_apq_get_datachartbyarea` `dc` on
 						`dc`.`idruntime`	= `nd`.`idruntime`
 					and `dc`.`area`			= `nd`.`area`
@@ -26,7 +26,7 @@ begin
 			select
 				*
 			from
-				`v_apq_get_fields_level5byarea` `nd`
+				`v_apq_get_fields_level3byarea` `nd`
 				inner join `v_apq_get_datachartbyarea` `dc` on
 						`dc`.`idruntime`	= `nd`.`idruntime`
 					and `dc`.`area`			= `nd`.`area`
@@ -45,7 +45,7 @@ begin
 			select
 				*
 			from
-				`v_apq_get_fields_level5byarea` `nd`
+				`v_apq_get_fields_level3byarea` `nd`
 				inner join `v_apq_get_datachartbyarea` `dc` on
 						`dc`.`idruntime`	= `nd`.`idruntime`
 					and `dc`.`area`			= `nd`.`area`
@@ -59,7 +59,7 @@ begin
 			select
 				*
 			from
-				`v_apq_get_fields_level5byarea` `nd`
+				`v_apq_get_fields_level3byarea` `nd`
 				inner join `v_apq_get_datachartbyarea` `dc` on
 						`dc`.`idruntime`	= `nd`.`idruntime`
 					and `dc`.`area`			= `nd`.`area`

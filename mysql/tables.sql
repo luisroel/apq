@@ -1,3 +1,51 @@
+drop table if exists `apq_families`;
+create table `apq_families` (
+	  `main`	varchar(60)
+	, `brother`	varchar(60)
+);
+
+insert into `apq_families` (`main`, `brother`) values
+  ('1000024329', '1000024329')
+, ('1000024329', '1000024330')
+
+, ('1000024331', '1000024331')
+, ('1000024331', '1000024332')
+
+, ('2610027900', '2610027900')
+, ('2610027900', '2610027901')
+
+, ('1000024303#3', '1000024303#3')
+, ('1000024303#3', '1000024306#3')
+
+, ('1000024319#2', '1000024319#2')
+, ('1000024319#2', '1000024320#2')
+
+, ('1000024325#2', '1000024325#2')
+, ('1000024325#2', '1000024326#2')
+
+, ('1000024333#2', '1000024333#2')
+, ('1000024333#2', '1000024334#2')
+
+, ('6923-9636', '6923-9636')
+, ('6923-9636', '6923-9637')
+
+, ('OS-501NC.B1', 'OS-501NC.B1')
+, ('OS-501NC.B1', 'OS-501NC.F1')
+, ('OS-501NC.B1', 'OS-501NC.F3')
+
+, ('OS-968BK.X0 COVER', 'OS-968BK.X0 COVER')
+, ('OS-968BK.X0 COVER', 'OS-968BK.X0 WALL')
+
+, ('OS-968WH.X0 COVER', 'OS-968WH.X0 COVER')
+, ('OS-968WH.X0 COVER', 'OS-968WH.X0 WALL')
+
+, ('OS-T593-F1-BK01-01', 'OS-T593-F1-BK01-01')
+, ('OS-T593-F1-BK01-01', 'OS-T593-F2-BK01-01')
+
+, ('OS-T593-F1-GY01-01', 'OS-T593-F1-GY01-01')
+, ('OS-T593-F1-GY01-01', 'OS-T593-F2-GY01-01');
+
+
 drop table if exists `apq_settings`;
 create table `apq_settings` (
 	`period`	int
@@ -79,6 +127,7 @@ create table `apq_prodtimes` (
 	  `idruntime`		bigint
 	, `workorder`		varchar(20)
 	, `idequipment`		varchar(20)
+    , `itemid`			varchar(35)
 	, `starttime`		datetime
 	, `endtime`			datetime
 	, `time`			float
@@ -147,7 +196,7 @@ create table `apq_countssummary` (
 	, `goodcount`		float
 	, `badcount`		float
 	, `totalcount`		float
-	, `goodtime`			float
+	, `goodtime`		float
 	, `losstime`		float
 	, `totaltime`		float
 );
@@ -338,3 +387,50 @@ create table `apq_setupandstartbyequipment` (
 	, `stdsetuptime`	float
 	, `stdstarttime`	float
 );
+
+drop table if exists `apq_families`;
+create table `apq_families` (
+	  `main`	varchar(60)
+	, `brother`	varchar(60)
+);
+insert into `apq_families` (`main`, `brother`) values
+  ('1000024329', '1000024329')
+, ('1000024329', '1000024330')
+
+, ('1000024331', '1000024331')
+, ('1000024331', '1000024332')
+
+, ('2610027900', '2610027900')
+, ('2610027900', '2610027901')
+
+, ('1000024303#3', '1000024303#3')
+, ('1000024303#3', '1000024306#3')
+
+, ('1000024319#2', '1000024319#2')
+, ('1000024319#2', '1000024320#2')
+
+, ('1000024325#2', '1000024325#2')
+, ('1000024325#2', '1000024326#2')
+
+, ('1000024333#2', '1000024333#2')
+, ('1000024333#2', '1000024334#2')
+
+, ('6923-9636', '6923-9636')
+, ('6923-9636', '6923-9637')
+
+, ('OS-501NC.B1', 'OS-501NC.B1')
+, ('OS-501NC.B1', 'OS-501NC.F1')
+, ('OS-501NC.B1', 'OS-501NC.F3')
+
+, ('OS-968BK.X0 COVER', 'OS-968BK.X0 COVER')
+, ('OS-968BK.X0 COVER', 'OS-968BK.X0 WALL')
+
+, ('OS-968WH.X0 COVER', 'OS-968WH.X0 COVER')
+, ('OS-968WH.X0 COVER', 'OS-968WH.X0 WALL')
+
+, ('OS-T593-F1-BK01-01', 'OS-T593-F1-BK01-01')
+, ('OS-T593-F1-BK01-01', 'OS-T593-F2-BK01-01')
+
+, ('OS-T593-F1-GY01-01', 'OS-T593-F1-GY01-01')
+, ('OS-T593-F1-GY01-01', 'OS-T593-F2-GY01-01');
+

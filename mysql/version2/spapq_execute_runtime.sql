@@ -4,6 +4,10 @@ create procedure `spapq_execute_runtime`(
 	idruntime	bigint
 )
 begin
+
+	-- delete families numbers
+	call `spapq_pack_prodtimes`( idruntime );
+
 	-- By Summary
 	call `spapq_create_equipmentsummary`( idruntime  );
 	call `spapq_create_availabilitysummary`( idruntime );
@@ -33,6 +37,7 @@ begin
 	call `spapq_create_countsbyequipment`( idruntime );
 	call `spapq_create_prodtimesbyequipment`( idruntime );
 	call `spapq_create_setupandstartbyequipment`( idruntime );
+    
 
 end;
 $$

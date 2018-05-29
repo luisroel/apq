@@ -39,8 +39,9 @@ class model:
 
 		# local execution
 		for row in table:
-			sql_sentence = "insert into apq_stops (idruntime, idequipment, date, idparo, tipoparo, clasification, time) values ( %s, '%s', '%s', '%s', '%s', '%s', %s);" % ( parms[2], row[0], unicode(row[1]), row[2], row[3], row[4], row[5] )
-			self.conn.local_execute_sql_noreturn(sql_sentence)
+			if row[0] != None:
+				sql_sentence = "insert into apq_stops (`idruntime`, `idequipment`, `date`, `idparo`, `tipoparo`, `clasification`, `time`) values ( %s, '%s', '%s', '%s', '%s', '%s', %s);" % ( parms[2], row[0], unicode(row[1]), row[2], row[3], row[4], row[5] )
+				self.conn.local_execute_sql_noreturn(sql_sentence)
 
 	"""
 		parms = ( from_date, to_date, id_runtime )
@@ -99,10 +100,10 @@ class model:
 			WHERE
 				[IO].[EntryDate] >= @FromDate AND [IO].[EntryDate] < @ToDate
 		"""
-		sql_sentence = "SELECT [IO].[ItemId], [CM].[Maquina], [IO].[EntryDate], [TP].[ProdTime], (CASE WHEN [IO].[IdPlace] IN (6, 10, 16) THEN 0 ELSE [IO].[QtyOut] END) AS [GoodCount], (CASE WHEN [IO].[IdPlace] IN (6, 10, 16) THEN [IO].[QtyOut] ELSE 0 END) AS [BadCount], [IO].[QtyOut] AS [TotalCount], (CASE WHEN [IO].[IdPlace] IN (6, 10, 16) THEN 0 ELSE [IO].[QtyOut] END) * [TP].[ProdTime] AS [GoodTime], (CASE WHEN [IO].[IdPlace] IN (6, 10, 16) THEN [IO].[QtyOut] ELSE 0 END) * [TP].[ProdTime] AS [LostTime], [IO].[QtyOut] * [TP].[ProdTime] AS [TotalTime] FROM [dbo].[InvtMold_Output] [IO] INNER JOIN [dbo].[MOLDAT05] [M5] ON [M5].[IdOut] = [IO].[IdOut] AND [M5].[Estatus] = 'A' INNER JOIN [dbo].[CambioMolde] [CM] ON [CM].[IdCambioMolde] = [M5].[WO] AND [CM].[Estatus] = 'A' INNER JOIN [dbo].[v_Table_Plastic] [TP] ON [TP].[ItemId] = [IO].[ItemId] WHERE [IO].[EntryDate] >= '%s' AND [IO].[EntryDate] < '%s';" % ( parms[0], parms[1] )
+		sql_sentence = "SELECT [IO].[ItemId], [CM].[Maquina], [IO].[EntryDate], [TP].[ProdTime], (CASE WHEN [IO].[IdPlace] IN (6, 10, 16) THEN 0 ELSE [IO].[QtyOut] END) AS [GoodCount], (CASE WHEN [IO].[IdPlace] IN (6, 10, 16) THEN [IO].[QtyOut] ELSE 0 END) AS [BadCount], [IO].[QtyOut] AS [TotalCount], (CASE WHEN [IO].[IdPlace] IN (6, 10, 16) THEN 0 ELSE [IO].[QtyOut] END) * [TP].[ProdTime] / 60.0 AS [GoodTime], (CASE WHEN [IO].[IdPlace] IN (6, 10, 16) THEN [IO].[QtyOut] ELSE 0 END) * [TP].[ProdTime] / 60.0 AS [LostTime], [IO].[QtyOut] * [TP].[ProdTime] / 60.0 AS [TotalTime] FROM [dbo].[InvtMold_Output] [IO] INNER JOIN [dbo].[MOLDAT05] [M5] ON [M5].[IdOut] = [IO].[IdOut] AND [M5].[Estatus] = 'A' INNER JOIN [dbo].[CambioMolde] [CM] ON [CM].[IdCambioMolde] = [M5].[WO] AND [CM].[Estatus] = 'A' INNER JOIN [dbo].[v_Table_Plastic] [TP] ON [TP].[ItemId] = [IO].[ItemId] WHERE [IO].[EntryDate] >= '%s' AND [IO].[EntryDate] < '%s';" % ( parms[0], parms[1] )
 		table1 = self.conn.remote_execute_sql_table_return(sql_sentence)
 
-		sql_sentence ="SELECT [IO].[ItemId], [CM].[Maquina], [IO].[EntryDate], [TP].[ProdTime], 0 AS [GoodCount], [IO].[QtyOut]	AS [BadCount], [IO].[QtyOut] AS [TotalCount], 0 AS [GoodTime], ([IO].[QtyOut]*[TP].[ProdTime]) AS [LostTime], ([IO].[QtyOut]*[TP].[ProdTime]) AS [TotalTime] FROM [dbo].[InvtMold_Output] [IO] INNER JOIN [dbo].[MOLDAT02] [M2] ON [M2].[IdOut] = [IO].[IdOut] INNER JOIN [dbo].[CambioMolde] [CM] ON [CM].[IdCambioMolde] = [M2].[WO] AND [CM].[Estatus] = 'A' INNER JOIN [dbo].[v_Table_Plastic] [TP] ON [TP].[ItemId] = [IO].[ItemId] WHERE [IO].[EntryDate] >= '%s' AND [IO].[EntryDate] < '%s';" % ( parms[0], parms[1] )
+		sql_sentence ="SELECT [IO].[ItemId], [CM].[Maquina], [IO].[EntryDate], [TP].[ProdTime], 0 AS [GoodCount], [IO].[QtyOut]	AS [BadCount], [IO].[QtyOut] AS [TotalCount], 0 AS [GoodTime], ([IO].[QtyOut]*[TP].[ProdTime]/60.0) AS [LostTime], ([IO].[QtyOut]*[TP].[ProdTime]/60.0) AS [TotalTime] FROM [dbo].[InvtMold_Output] [IO] INNER JOIN [dbo].[MOLDAT02] [M2] ON [M2].[IdOut] = [IO].[IdOut] INNER JOIN [dbo].[CambioMolde] [CM] ON [CM].[IdCambioMolde] = [M2].[WO] AND [CM].[Estatus] = 'A' INNER JOIN [dbo].[v_Table_Plastic] [TP] ON [TP].[ItemId] = [IO].[ItemId] WHERE [IO].[EntryDate] >= '%s' AND [IO].[EntryDate] < '%s';" % ( parms[0], parms[1] )
 		table2 = self.conn.remote_execute_sql_table_return(sql_sentence)
 
 		# delete previuos rows
@@ -112,7 +113,7 @@ class model:
 		# local execution
 		table = table1 + table2
 		for row in table:
-			sql_sentence = "insert into apq_counts (idruntime, itemid, idequipment, date, cycletime, goodcount, badcount, totalcount, goodtime, losstime, totaltime) values ( %s, '%s', '%s', '%s', %s, %s, %s, %s, %s, %s, %s);" % ( parms[2], row[0], row[1], unicode(row[2]), row[3], row[4], row[5], row[6], row[7], row[8], row[9] )
+			sql_sentence = "insert into apq_counts (`idruntime`, `itemid`, `idequipment`, `date`, `cycletime`, `goodcount`, `badcount`, `totalcount`, `goodtime`, `losstime`, `totaltime`) values ( %s, '%s', '%s', '%s', %s, %s, %s, %s, %s, %s, %s);" % ( parms[2], row[0], row[1], unicode(row[2]), row[3], row[4], row[5], row[6], row[7], row[8], row[9] )
 			self.conn.local_execute_sql_noreturn(sql_sentence)
 
 	"""
@@ -142,7 +143,7 @@ class model:
 
 		# local execution
 		for row in table:
-			sql_sentence = "insert into apq_equipment( idruntime, idequipment, power, area, line ) values ( %s, '%s', %s, %s, %s);" % ( parms[2], row[0], row[1], row[2], row[3] )
+			sql_sentence = "insert into apq_equipment( `idruntime`, `idequipment`, `power`, `area`, `line` ) values ( %s, '%s', %s, %s, %s);" % ( parms[2], row[0], row[1], row[2], row[3] )
 			self.conn.local_execute_sql_noreturn(sql_sentence)
 
 	"""
@@ -156,6 +157,7 @@ class model:
 			SELECT
 				  [CM].[IdCambioMolde]
 				, [CM].[Maquina]
+				, [CM].[No_PP]
 		--		, [M3].[HrIniCambio]
 		--		, [M3].[HrFinCambio]
 		--		, [M3].[HrIniMaq]
@@ -170,7 +172,7 @@ class model:
 					[CM].[Estatus]	= 'A'
 				AND [CM].[FechaCambio] >= @FromDate AND [CM].[FechaCambio] < @ToDate
 		"""
-		sql_sentence =  "SELECT [CM].[IdCambioMolde], [CM].[Maquina], ISNULL([M3].[HrIniProd],'%s'), (CASE WHEN ISNULL([CM].[FechaParo], '%s') > '%s' THEN '%s' ELSE ISNULL([CM].[FechaParo], '%s') END), DATEDIFF(MINUTE, ISNULL([M3].[HrIniProd],'%s'), (CASE WHEN ISNULL([CM].[FechaParo], '%s') > '%s' THEN '%s' ELSE ISNULL([CM].[FechaParo], '%s') END))	AS [Minutes] FROM [dbo].[CAMBIOMOLDE] [CM] LEFT JOIN [MOLDAT03] [M3] ON [M3].[WO] = [CM].[IdCambioMolde] WHERE [CM].[Estatus] = 'A' AND [CM].[FechaCambio] >= '%s' AND [CM].[FechaCambio] < '%s';" % (parms[0], parms[1], parms[1], parms[1], parms[1], parms[0], parms[1], parms[1], parms[1], parms[1], parms[0], parms[1])
+		sql_sentence =  "SELECT [CM].[IdCambioMolde], [CM].[Maquina], [CM].[No_PP], ISNULL([M3].[HrIniProd],[CM].[FechaCambio]), (CASE WHEN ISNULL([CM].[FechaParo], '%s') > '%s' THEN '%s' ELSE ISNULL([CM].[FechaParo], '%s') END), DATEDIFF(MINUTE, ISNULL([M3].[HrIniProd],[CM].[FechaCambio]), (CASE WHEN ISNULL([CM].[FechaParo], '%s') > '%s' THEN '%s' ELSE ISNULL([CM].[FechaParo], '%s') END))	AS [Minutes] FROM [dbo].[CAMBIOMOLDE] [CM] LEFT JOIN [MOLDAT03] [M3] ON [M3].[WO] = [CM].[IdCambioMolde] WHERE [CM].[Estatus] = 'A' AND [CM].[FechaCambio] >= '%s' AND [CM].[FechaCambio] < '%s';" % (parms[1], parms[1], parms[1], parms[1], parms[1], parms[1], parms[1], parms[1], parms[0], parms[1])
 		table = self.conn.remote_execute_sql_table_return(sql_sentence)
 
 		# delete previuos rows
@@ -179,7 +181,7 @@ class model:
 
 		# local execution
 		for row in table:
-			sql_sentence = "insert into apq_prodtimes( idruntime, workorder, idequipment, starttime, endtime, time ) values ( %s, '%s', '%s', '%s', '%s', %s);" % ( parms[2], row[0], row[1], unicode(row[2]), unicode(row[3]), row[4] )
+			sql_sentence = "insert into apq_prodtimes( `idruntime`, `workorder`, `idequipment`, `itemid`, `starttime`, `endtime`, `time` ) values ( %s, '%s', '%s', '%s', '%s', '%s', %s);" % ( parms[2], row[0], row[1], row[2], unicode(row[3]), unicode(row[4]), row[5] )
 			self.conn.local_execute_sql_noreturn(sql_sentence)
 
 
@@ -224,7 +226,19 @@ class model:
 
 		# local execution
 		for row in table:
-			sql_sentence = "insert into apq_setupandstart( idruntime, workorder, idequipment, date, idusm, actsetuptime, actstarttime, stdsetuptime, stdstarttime ) values ( %s, '%s', '%s', '%s', '%s', %s, %s, %s, %s);" % ( parms[2], row[0], row[1], unicode(row[2]), row[3], row[4], row[5], row[6], row[7] )
+			actsetuptime = row[4]
+			if row[4] == 0 or row[4] > 180:
+				actsetuptime = 90
+			actstarttime = row[5]
+			if row[5] == 0 or row[5] > 180:
+				actstarttime = 30
+			stdsetuptime = row[6]
+			if row[6] == 0 or row[6] > 180:
+				stdsetuptime = 90
+			stdstarttime = row[7]
+			if row[7] == 0 or row[7] > 180:
+				stdstarttime = 30
+			sql_sentence = "insert into apq_setupandstart( `idruntime`, `workorder`, `idequipment`, `date`, `idusm`, `actsetuptime`, `actstarttime`, `stdsetuptime`, `stdstarttime` ) values ( %s, '%s', '%s', '%s', '%s', %s, %s, %s, %s);" % ( parms[2], row[0], row[1], unicode(row[2]), row[3], actsetuptime, actstarttime, stdsetuptime, stdstarttime )
 			self.conn.local_execute_sql_noreturn(sql_sentence)
 
 	"""

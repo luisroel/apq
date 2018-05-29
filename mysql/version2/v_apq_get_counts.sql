@@ -11,19 +11,19 @@ as
 		, (`ct`.`goodtime` / 60.0)			as `nom_good_count_time`
 		, (`ct`.`losstime` / 60.0)			as `nom_bad_count_time`
 
-		, (`ct`.`totaltime` / 60.0)			as `nom_total_count_time`
+		, (`ct`.`totaltime` / 60.0)			as `nom_running_time`
 		, (`ss`.`stdsetuptime` / 60.0 )		as `nom_setup_time`
 		, (`ss`.`stdstarttime` / 60.0 )		as `nom_start_time`
 		, (`ct`.`totaltime` / 60.0)
 		+ (`ss`.`stdsetuptime` / 60.0 )
-		+ (`ss`.`stdstarttime` / 60.0 )		as `nom_prod_time`
+		+ (`ss`.`stdstarttime` / 60.0 )		as `nom_production_time`
 
-		, (`ps`.`time` / 60.0)				as `act_total_count_time`
+		, (`ps`.`time` / 60.0)				as `act_running_time`
 		, (`ss`.`actsetuptime` / 60.0)		as `act_setup_time`
 		, (`ss`.`actstarttime` / 60.0)		as `act_start_time`
 		, (`ps`.`time` / 60.0)
 		+ (`ss`.`actsetuptime` / 60.0)
-		+ (`ss`.`actstarttime` / 60.0)		as `act_prod_time`
+		+ (`ss`.`actstarttime` / 60.0)		as `act_production_time`
 
 		, ((`ss`.`actsetuptime` - `ss`.`stdsetuptime`) / 60.0)	as `setup_time_loss`
         , ((`ss`.`actstarttime` - `ss`.`stdstarttime`) / 60.0)	as `start_time_loss`

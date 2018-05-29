@@ -9,7 +9,7 @@ begin
 		select
 			*
 		from
-			`v_apq_get_fields_level5` `nd`
+			`v_apq_get_fields_level3` `nd`
 			inner join `v_apq_get_datachart` `dc` on
 				`dc`.`idruntime` = `nd`.`idruntime`
 		where
@@ -23,7 +23,7 @@ begin
 		select
 			*
 		from
-			`v_apq_get_fields_level5` `nd`
+			`v_apq_get_fields_level3` `nd`
 			inner join `v_apq_get_datachart` `dc` on
 				`dc`.`idruntime` = `nd`.`idruntime`
 		where

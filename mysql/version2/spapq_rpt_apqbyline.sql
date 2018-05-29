@@ -12,7 +12,7 @@ begin
 				select
 					*
 				from
-					`v_apq_get_fields_level5byline` `nd`
+					`v_apq_get_fields_level3byline` `nd`
 					inner join `v_apq_get_datachartbyline` `dc` on
 							`dc`.`idruntime` 	= `nd`.`idruntime`
 						and `dc`.`area`			= `nd`.`area`
@@ -30,7 +30,7 @@ begin
 				select
 					*
 				from
-					`v_apq_get_fields_level5byline` `nd`
+					`v_apq_get_fields_level3byline` `nd`
 					inner join `v_apq_get_datachartbyline` `dc` on
 							`dc`.`idruntime`	= `nd`.`idruntime`
 						and `dc`.`area`			= `nd`.`area`
@@ -51,7 +51,7 @@ begin
 				select
 					*
 				from
-					`v_apq_get_fields_level5byline` `nd`
+					`v_apq_get_fields_level3byline` `nd`
 					inner join `v_apq_get_datachartbyline` `dc` on
 							`dc`.`idruntime`	= `nd`.`idruntime`
 						and `dc`.`area`			= `nd`.`area`
@@ -70,7 +70,7 @@ begin
 				select
 					*
 				from
-					`v_apq_get_fields_level5byline` `nd`
+					`v_apq_get_fields_level3byline` `nd`
 					inner join `v_apq_get_datachartbyline` `dc` on
 							`dc`.`idruntime`	= `nd`.`idruntime`
 						and `dc`.`area`			= `nd`.`area`
@@ -94,7 +94,7 @@ begin
 				select
 					*
 				from
-					`v_apq_get_fields_level5byline` `nd`
+					`v_apq_get_fields_level3byline` `nd`
 					inner join `v_apq_get_datachartbyline` `dc` on
 							`dc`.`idruntime`	= `nd`.`idruntime`
 						and `dc`.`area`			= `nd`.`area`
@@ -110,7 +110,7 @@ begin
 				select
 					*
 				from
-					`v_apq_get_fields_level5byline` `nd`
+					`v_apq_get_fields_level3byline` `nd`
 					inner join `v_apq_get_datachartbyline` `dc` on
 							`dc`.`idruntime`	= `nd`.`idruntime`
 						and `dc`.`area`			= `nd`.`area`
@@ -129,7 +129,7 @@ begin
 				select
 					*
 				from
-					`v_apq_get_fields_level5byline` `nd`
+					`v_apq_get_fields_level3byline` `nd`
 					inner join `v_apq_get_datachartbyline` `dc` on
 							`dc`.`idruntime`	= `nd`.`idruntime`
 						and `dc`.`area`			= `nd`.`area`
@@ -146,7 +146,7 @@ begin
 				select
 					*
 				from
-					`v_apq_get_fields_level5byline` `nd`
+					`v_apq_get_fields_level3byline` `nd`
 					inner join `v_apq_get_datachartbyline` `dc` on
 							`dc`.`idruntime`	= `nd`.`idruntime`
 						and `dc`.`area`			= `nd`.`area`

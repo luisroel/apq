@@ -3,11 +3,11 @@ create view `v_apq_get_availability`
 as
 	select
 			`ps`.`idruntime`
-		  , `ps`.`plannedproductiontime`						-- Workable time
-		  , `ps`.`scheduleloss`									-- Off time
-		  , `ps`.`plannedstop`									-- Breaks
-		  , `ps`.`totaltime`
-		  , `st`.`stoptime` / 60.0			as `stoptime`		-- Equipment Stop Time
+		  , `ps`.`time_for_production`
+		  , `ps`.`schedule_loss`
+		  , `ps`.`planned_stop`
+		  , `ps`.`total_time`
+		  , ifnull(`st`.`stop_time`,0.0) as `stop_time`
 	from
 		`v_apq_get_productionschedule` `ps`
 		left join `v_apq_get_stops` `st` on
