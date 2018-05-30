@@ -10,22 +10,20 @@ as
 		, `av`.`total_time`
         , `av`.`stop_time`
 
-		, `av`.`time_for_production` - `ct`.`nom_production_time`	as `nom_iddle_time`
-		, `av`.`time_for_production` - `ct`.`act_production_time`	as `act_iddle_time`
+		, (`ct`.`act_total_running` - `av`.`stop_time`)	
+		+ `ct`.`act_setup_time`
+		+ `ct`.`act_start_time`										as `act_production_time`
 
 		, `av`.`stop_time`											as `availability_time_loss`
-		, `ct`.`act_production_time` - `av`.`stop_time` 			as `availability_time`
-		, `ct`.`act_production_time`								as `availability_total`
-
-		, (`ct`.`act_production_time` - `ct`.`nom_production_time`) as `performance_time_loss`
-		, `ct`.`nom_production_time` 								as `performance_time`
-		, `ct`.`act_production_time`								as `performance_total`
+		, `ct`.`nom_production_time` - `av`.`stop_time` 			as `availability_time`
+		, `ct`.`nom_production_time`								as `availability_total`
 
 		, `ct`.`bad_count` 											as `quality_loss`
 		, (`ct`.`bad_count` / `ct`.`total_count`)					as `quality_loss_index`
 		, `ct`.`good_count` 										as `quality_good`
 		, (`ct`.`good_count` / `ct`.`total_count`)					as `quality_good_index`
 		, `ct`.`total_count`										as `quality_total`
+		
 	from
 		`v_apq_get_countsbyarea` `ct`
 		inner join `v_apq_get_availabilitybyarea` `av` on

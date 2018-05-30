@@ -4,8 +4,11 @@ as
 	select
 		  `vl`.*
 
-		, (`vl`.`availability_time` / `vl`.`availability_total` )	as `ia_index`
-		, (`vl`.`performance_time` / `vl`.`performance_total`) 		as `ip_index`
-		, (`vl`.`good_count` / `vl`.`total_count`) 					as `iq_index`
+		, `vl`.`time_for_production` - `vl`.`nom_production_time`	as `nom_iddle_time`
+		, `vl`.`time_for_production` - `vl`.`act_production_time`	as `act_iddle_time`
+
+		, (`vl`.`act_production_time` - `vl`.`nom_production_time`) as `performance_time_loss`
+		, `vl`.`nom_production_time` 								as `performance_time`
+		, `vl`.`act_production_time`								as `performance_total`
 	from
 		`v_apq_get_fields_level1byline` `vl`;

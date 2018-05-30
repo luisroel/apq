@@ -178,8 +178,8 @@ select * from `apq_availabilitysummary` `aa`;
 select * from `apq_prodtimessummary` `pt`;
 select * from `apq_setupandstartsummary` `ss`;
 
-call `spapq_rpt_apq` (0);
-call `spapq_rpt_apqbyarea`(0, 0);
+call `spapq_rpt_apq` (1);
+call `spapq_rpt_apqbyarea`(1, 0);
 call `spapq_rpt_apqbyline`(1, 0, 0);
 call `spapq_rpt_apqbyequipment`(1, 1, 1, '%');
 
@@ -225,18 +225,19 @@ call `spapq_create_setupandstartbyequipment`( 1 );
 -- ==================================================================================
 
 select * from `v_apq_get_datachart`;
-select * from `v_apq_get_fields_level3`;
+select * from `v_apq_get_fields_level3byequipment` where `idequipment` = 'TOYO-95 350T';
 
 select * from `apq_runtime`;
 call `spapq_rpt_apq`(1);
 call `spapq_rpt_apqbyarea`(1, 0);
 call `spapq_rpt_apqbyline`(1, 0, 0);
-call `spapq_rpt_apqbyequipment`(1, 1, 3, 'TOYO-40 180T');
+call `spapq_rpt_apqbyequipment`(1, 1, 2, 'TOYO-14 30T');
 
-select * from `apq_stops` where `idequipment` = 'TOYO-63 30T';
-select * from `apq_counts` where `idequipment` = 'TOYO-40 180T';
-select * from `apq_setupandstart` where `idequipment` = 'TOYO-40 180T';
-select * from `apq_prodtimes` where `idequipment` = 'TOYO-40 180T';
+select * from `apq_prodtimes` where `idequipment` = 'TOYO-95 350T';
+select * from `apq_setupandstart` where `idequipment` = 'TOYO-95 350T';
+select * from `apq_counts` where `idequipment` = 'TOYO-95 350T';
+select * from `apq_stops` where `idequipment` = 'TOYO-95 350T';
+
 
 select * from `apq_prodtimesbyequipment` where `idequipment` = 'TOYO-40 180T';
 select * from `v_apq_get_productionschedulebyequipment` where `idequipment` = 'TOYO-40 180T';
